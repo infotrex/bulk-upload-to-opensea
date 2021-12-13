@@ -1,8 +1,8 @@
 # bulk-upload-to-opensea
 BULK UPLOAD NFTs to OPENSEA
-A cross platform python IDE implementing selenium 4
-If you want to support this project or me, please check out my NFTs 
-https://opensea.io/collection/fortune-cat-neko and wish give it a little love or grab it.
+A cross platform python IDE implementing selenium 4<BR>
+If you want to support this project or me, please check out my NFTs <BR>
+https://opensea.io/collection/fortune-cat-neko and wish give it a little love or grab it.<BR>
 Thank you.
 
 # INSTRUCTIONS
