@@ -7,6 +7,8 @@ If you want to support this project or me, please check out my NFTs https://open
 <ul>
   <li>sfsdfs</li>
   </ul>Download and extract this project in your local device (keep all files and folders that come with the repo in this folder)
+
+
 •	Download and update Python. My python version is 3.8.10
 * https://www.youtube.com/watch?v=9o4gDQvVkLU
 •	Copy Chrome profile into Chrome profile that come with the repo in this folder.  search "%LOCALAPPDATA%\Google\Chrome\User Data\" copy chrome profile.
