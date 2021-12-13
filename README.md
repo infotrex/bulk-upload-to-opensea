@@ -3,7 +3,7 @@ BULK UPLOAD NFTs to OPENSEA
 A cross platform python IDE implementing selenium 4
 If you want to support this project or me, please check out my NFTs https://opensea.io/collection/fortune-cat-neko and wish give it a little love or grab it. Thank you.
 
-# **INSTRUCTIONS**
+# INSTRUCTIONS
 <ul>
   <li>sfsdfs</li>
   </ul>Download and extract this project in your local device (keep all files and folders that come with the repo in this folder)
@@ -32,7 +32,7 @@ If you want to support this project or me, please check out my NFTs https://open
 •	 Click “open chrome browser” will popup new chrome browser, login / sign-in your metamask account. Download metamask extension if don’t have
 •	 And click “start” to let it run.
 
-Message for a MacOS user
+# Message for a MacOS user
 Currently this script only tested in Windows 7. You can try run into your MacOS. Thank you.
 
 If you have any questions or want to get in contact you can find me on twitter by searching @klvntss
