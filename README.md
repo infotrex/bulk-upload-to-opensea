@@ -3,8 +3,10 @@ BULK UPLOAD NFTs to OPENSEA
 A cross platform python IDE implementing selenium 4
 If you want to support this project or me, please check out my NFTs https://opensea.io/collection/fortune-cat-neko and wish give it a little love or grab it. Thank you.
 
-INSTRUCTIONS
-•	Download and extract this project in your local device (keep all files and folders that come with the repo in this folder)
+**INSTRUCTIONS**
+<ul>
+  <li>sfsdfs</li>
+  </ul>Download and extract this project in your local device (keep all files and folders that come with the repo in this folder)
 •	Download and update Python. My python version is 3.8.10
 * https://www.youtube.com/watch?v=9o4gDQvVkLU
 •	Copy Chrome profile into Chrome profile that come with the repo in this folder.  search "%LOCALAPPDATA%\Google\Chrome\User Data\" copy chrome profile.
