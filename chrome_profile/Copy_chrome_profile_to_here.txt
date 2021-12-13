@@ -1,0 +1,3 @@
+https://www.youtube.com/watch?v=9o4gDQvVkLU
+Copy Chrome profile into Chrome profile that come with the repo in this folder. 
+search "%LOCALAPPDATA%\Google\Chrome\User Data" copy chrome profile.
