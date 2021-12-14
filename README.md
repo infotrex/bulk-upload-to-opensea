@@ -19,7 +19,7 @@ Thank you.
    <li>Once running the script, will pop-up a dialog box / application </li>
    <li>Fill in the variable for your project upload properties, </li>
      <ul>
-       <li>Opensea collection link: https://www.opensea.io/collection/<yourcollectionsname>/assets/create</li>
+       <li>Opensea collection link: https://www.opensea.io/collection/yourcollectionsname/assets/create</li>
         <li>Start number 1</li>
         <li>End number 999 or any number</li>
         <li>Default price: 0.005</li>
