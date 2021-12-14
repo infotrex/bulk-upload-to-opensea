@@ -4,6 +4,9 @@ If you want to support this project or me, please check out my NFTs <BR>
 https://opensea.io/collection/fortune-cat-neko and wish give it a little love or grab it.<BR>
 Thank you.
 
+  Tutorial video
+  https://www.youtube.com/watch?v=yEowEDfTSpA
+  
 # INSTRUCTIONS
 <ul>
   <li>Download and extract this project in your local device (keep all files and folders that come with the repo in this folder)</li>
