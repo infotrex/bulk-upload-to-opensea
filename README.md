@@ -15,7 +15,7 @@ Thank you.
    <li>Put all the NFTs images into folder “src/images” (etc 1.png), and NFTs properties metadata .json file put into folder src/json. (etc 1.json)</li>
    <li>Open this project folder with any code editor and click "open powershell " or ‘Terminal’</li>
    <li>Pip install requirements.txt by running the following command (pip install -r requirements.txt) </li>
-   <li>Run the script, type “python openseaupload.py”</li>
+   <li>Run the script, type “python upload.py”</li>
    <li>Once running the script, will pop-up a dialog box / application </li>
    <li>Fill in the variable for your project upload properties, </li>
      <ul>
