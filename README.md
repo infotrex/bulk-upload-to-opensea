@@ -38,7 +38,7 @@ Thank you.
   </ul>
      
 # Enchance section
-Will do a unique price setting for each individual nft image.
+Will do a unique price setting for each individual nft image. <BR>
 If you like my project, please check out my NFTs https://opensea.io/collection/fortune-cat-neko and do a minimun support.
 Thank you.
      
