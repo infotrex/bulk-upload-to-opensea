@@ -36,7 +36,11 @@ Thank you.
      <li>Click “open chrome browser” will popup new chrome browser, login / sign-in your metamask account. Download metamask extension if don’t have</li>
      <li>And click “start” to let it run.</li>
   </ul>
-
+# Enchance section
+     Will do a unique price setting for each individual nft image.
+     If you like my project, please check out my NFTs https://opensea.io/collection/fortune-cat-neko and do a minimun support.
+     Thank you.
+     
 # Message for a MacOS user
 Currently this script only tested in Windows 7. You can try run into your MacOS. Thank you.
 
