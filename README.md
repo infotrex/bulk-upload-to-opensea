@@ -40,7 +40,8 @@ Thank you.
 # Error message indicator
 DeprecationWarning: use options instead of chrome_options chrome_options=opt,
 <ul><li>1) Press "open chrome browser" and 2) "start" button to resolved this error message</li></ul>
-     
+urlopen error [SSL: CERTIFICATE_VERIFY_FAILED]   
+<ul><li>please use "upload-ss.py" this file</li></ul>
      
 # Enhanced section
 Will do a unique price setting for each individual nft image. <BR>
