@@ -36,6 +36,10 @@ Thank you.
      <li>Click “open chrome browser” will popup new chrome browser, login / sign-in your metamask account. Download metamask extension if don’t have</li>
      <li>And click “start” to let it run.</li>
   </ul>
+#Error message indicator
+     DeprecationWarning: use options instead of chrome_options chrome_options=opt,
+     <ul>1) Press "open chrome browser" and 2) "start" button to resolved this error message</li>
+     
      
 # Enhanced section
 Will do a unique price setting for each individual nft image. <BR>
