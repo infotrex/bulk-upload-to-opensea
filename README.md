@@ -36,15 +36,17 @@ Thank you.
      <li>Click “open chrome browser” will popup new chrome browser, login / sign-in your metamask account. Download metamask extension if don’t have</li>
      <li>And click “start” to let it run.</li>
   </ul>
-    
+
+     
 # Checklist 
- <ul>
+ <p><ul>
    <li>Disabled opensea night mode</li>
    <li>Chrome profile are copy into the folder</li>
    <li>untick "polycon blockchain</li>
    <li>Select your file "src" folder</li>
    <li>double check your image / json format: 1.png or 1.json</li>
    <ul>
+     </p>
 
      
 # Error message indicator
