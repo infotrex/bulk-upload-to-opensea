@@ -45,6 +45,7 @@ Thank you.
    <li>Select your file "src" folder</li>
    <li>double check your image / json format: 1.png or 1.json</li>
    <ul>
+
      
 # Error message indicator
 DeprecationWarning: use options instead of chrome_options chrome_options=opt,
