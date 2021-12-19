@@ -44,7 +44,7 @@ Thank you.
    <li>Chrome profile are copy into the folder</li>
    <li>Opensea collection link must end with "assets/create", look like this : https://www.opensea.io/collection/yourcollectionsname/assets/create</li>
    <li>untick "polycon blockchain</li>
-   <li>Select your file "src" folder</li>
+   <li>Select "src" folder</li>
    <li>double check your image / json format: 1.png or 1.json</li>
    <li>press "open chrome browser" button, will popup a new chrome browser</li> 
    </ul>
