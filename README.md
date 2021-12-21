@@ -37,6 +37,13 @@ Thank you.
      <li>And click “start” to let it run.</li>
   </ul>
 
+#File usage
+upload.py
+For slow internet speed, please use general file ** xxxx.py**
+For speed up the upload process, please use **xxx-fast.py**
+For some user have "SSL: CERTIFICATE_VERIFY_FAILED" issue, please use **xxx-SSL.py**
+For only listing, please use **xxx-only.py**  
+
      
 # Checklist before press "start" button
  <p><ul>
@@ -50,7 +57,8 @@ Thank you.
    </ul>
      </p>
 
-     
+#files
+  
 # Error message indicator
 DeprecationWarning: use options instead of chrome_options chrome_options=opt,
 <ul><li>1) Press "open chrome browser" and 2) "start" button to resolved this error message</li></ul>
