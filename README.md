@@ -37,8 +37,7 @@ Thank you.
      <li>And click “start” to let it run.</li>
   </ul>
 
-#File usage
-upload.py
+# File usage
 For slow internet speed, please use general file ** xxxx.py**
 For speed up the upload process, please use **xxx-fast.py**
 For some user have "SSL: CERTIFICATE_VERIFY_FAILED" issue, please use **xxx-SSL.py**
