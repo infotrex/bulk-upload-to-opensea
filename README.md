@@ -38,10 +38,10 @@ Thank you.
   </ul>
 
 # File usage
-For slow internet speed, please use general file ** xxxx.py**
-For speed up the upload process, please use **xxx-fast.py**
-For some user have "SSL: CERTIFICATE_VERIFY_FAILED" issue, please use **xxx-SSL.py**
-For only listing, please use **xxx-only.py**  
+For slow internet speed, please use general file ** xxxx.py**<BR>
+For speed up the upload process, please use **xxx-fast.py**<BR>
+For some user have "SSL: CERTIFICATE_VERIFY_FAILED" issue, please use **xxx-SSL.py**<BR>
+For only listing, please use **xxx-only.py**  <BR>
 
      
 # Checklist before press "start" button
