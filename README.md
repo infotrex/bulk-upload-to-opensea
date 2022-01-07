@@ -78,7 +78,6 @@ and feedback to us. Thank you
 If you have any questions or want to get in contact you can find me on twitter by searching @klvntss
 
 # Thanks Message
-Please share and leave your star star
-If you found it useful, invite me a coffee( i like coffee :), 
-here is my Ethereum address:** 0xd5146965809e4286e24dcf2bfbf58c3840d433a2**
-Thank you very much and much success, see you soon ...
+<p>Please share and leave your star star</p>
+<p>If you found it useful, invite me a coffee( i like coffee :), here is my Ethereum address: <B>0xd5146965809e4286e24dcf2bfbf58c3840d433a2</b></p>
+<p>Thank you very much </p>
