@@ -1,7 +1,7 @@
 
 # DISCLAIMER / IMPORTANT NOTE BEFORE USE.
-<H2>***This application only for personal use, for any profit or commercial  use, 
-Please twitter me. Thank you !***</H2>
+<H2>***This application only for personal use not for sale, for any profit or resell this application, 
+Please inform or twitter me @klvntss. Thank you !***</H2>
 
 
 # bulk-upload-to-opensea
