@@ -1,3 +1,9 @@
+
+# DISCLAIMER / IMPORTANT NOTE BEFORE USE.
+<H2>***This application only for personal use, for any profit or commercial  use, 
+Please twitter me. Thank you !***</H2>
+
+
 # bulk-upload-to-opensea
 A cross platform python IDE implementing selenium 4<BR>
 If you want to support this project or me, please check out my NFTs <BR>
