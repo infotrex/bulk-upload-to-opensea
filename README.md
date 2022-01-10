@@ -1,8 +1,4 @@
 
-# DISCLAIMER / IMPORTANT NOTE BEFORE USE.
-<H2>***contact me if you want to sell this application. Thank you !***</H2>
-
-
 # bulk-upload-to-opensea
 A cross platform python IDE implementing selenium 4<BR>
 If you want to support this project or me, please check out my NFTs <BR>
