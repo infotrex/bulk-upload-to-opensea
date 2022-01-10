@@ -1,7 +1,6 @@
 
 # DISCLAIMER / IMPORTANT NOTE BEFORE USE.
-<H2>***This application only for personal use not for sale, for any profit or resell this application, 
-Please inform or twitter me @klvntss. Thank you !***</H2>
+<H2>***contact me if you want to sell this application. Thank you !***</H2>
 
 
 # bulk-upload-to-opensea
