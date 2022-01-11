@@ -42,14 +42,7 @@ Thank you.
      <li>And click “start” to let it run.</li>
   </ul>
 
-
-# File usage
-For slow internet speed, please use general file ** xxxx.py**<BR>
-For speed up the upload process, please use **xxx-fast.py**<BR>
-For some user have "SSL: CERTIFICATE_VERIFY_FAILED" issue, please use **xxx-SSL.py**<BR>
-For only listing, please use **xxx-only.py**  <BR>
-
-     
+ 
 # Checklist before press "start" button
  <p><ul>
    <li>Disabled opensea night mode</li>
@@ -63,13 +56,6 @@ For only listing, please use **xxx-only.py**  <BR>
    </ul>
      </p>
 
-#files
-  
-# Error message indicator
-DeprecationWarning: use options instead of chrome_options chrome_options=opt,
-<ul><li>1) Press "open chrome browser" and 2) "start" button to resolved this error message</li></ul>
-urlopen error [SSL: CERTIFICATE_VERIFY_FAILED]   
-<ul><li>please use "upload-ssl.py" this file</li></ul>
      
 # Enhanced section
 Will do a unique price setting for each individual nft image. <BR>
@@ -77,9 +63,9 @@ If you like my project, please check out my NFTs https://opensea.io/collection/f
 Thank you.
      
 # Message for a MacOS user
-Currently this script only tested in Windows 7. You can try run into your MacOS
-and feedback to us. Thank you
+Currently this script only tested in Windows 7. Not compatible for MacOS
 
+# Contact me
 If you have any questions or want to get in contact you can find me on twitter by searching @klvntss
 
 # Thanks
