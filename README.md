@@ -1,12 +1,16 @@
 
-# bulk-upload-to-opensea
+# bulk-upload-to-opensea v1.5
 A cross platform python IDE implementing selenium 4<BR>
 If you want to support this project or me, please check out my NFTs <BR>
 https://opensea.io/collection/fortune-cat-neko and wish give it a little love or grab it.<BR>
 Thank you.
 
-  Tutorial video
+  Tutorial video v1.0
   https://www.youtube.com/watch?v=yEowEDfTSpA
+  
+  Tutorial video v1.5
+  Coming Soon!
+  
   
 # INSTRUCTIONS
 <ul>
