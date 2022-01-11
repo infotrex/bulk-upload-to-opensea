@@ -12,7 +12,7 @@ Thank you.
   Coming Soon!
   
   
-# INSTRUCTIONS
+# Instructions
 <ul>
   <li>Download and extract this project in your local device (keep all files and folders that come with the repo in this folder)</li>
   <li>Download and update Python. My python version is 3.8.10 * https://www.youtube.com/watch?v=9o4gDQvVkLU</li>
