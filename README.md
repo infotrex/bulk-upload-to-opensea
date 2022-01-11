@@ -16,20 +16,17 @@ Thank you.
 <ul>
   <li>Download and extract this project in your local device (keep all files and folders that come with the repo in this folder)</li>
   <li>Download and update Python. My python version is 3.8.10 * https://www.youtube.com/watch?v=9o4gDQvVkLU</li>
-   <li>Copy Chrome profile into Chrome profile that come with the repo in this folder<BR>
-     search "%LOCALAPPDATA%\Google\Chrome\User Data\" copy chrome profile. <BR>
-     https://www.howtogeek.com/255653/how-to-find-your-chrome-profile-folder-on-windows-mac-and-linux/
-</li>
    <li>Put all the NFTs images into folder “src/images” (etc 1.png), and NFTs properties metadata .json file put into folder src/json. (etc 1.json)</li>
-   <li>Open this project folder with any code editor and click "open powershell " or ‘Terminal’</li>
-   <li>Pip install requirements.txt by running the following command (pip install -r requirements.txt) </li>
-   <li>Run the script, type “python upload.py”</li>
-   <li>Once running the script, will pop-up a dialog box / application </li>
+   <li>Open this project folder with any code editor and click "open powershell " or "Terminal"</li>
+   <li>Pip install requirements.txt by running the following command (pip install -r requirements.txt) <BR>
+       Please install PIP for Python if “pip is not recognized as an internal or external command</li>
+   <li>Run the script, type "python upload.py"</li>
+   <li>Once running the script, will pop-up the application </li>
    <li>Fill in the variable for your project upload properties, </li>
      <ul>
        <li>Opensea collection link: https://www.opensea.io/collection/yourcollectionsname/assets/create</li>
         <li>Start number 1</li>
-        <li>End number 999 or any number</li>
+        <li>End number 9999 or any number</li>
         <li>Default price: 0.005</li>
         <li>Title with end “#” symbol</li>
         <li>Description</li>
@@ -38,7 +35,7 @@ Thank you.
      </ul>
    <li>Click and Select the “src” folder.</li>
    <li>Click and “save this form”</li>
-     <li>Click “open chrome browser” will popup new chrome browser, login / sign-in your metamask account. Download metamask extension if don’t have</li>
+     <li>Click “open chrome browser” will popup a new chrome browser, login / sign-in your metamask account. Download metamask extension if don’t have</li>
      <li>And click “start” to let it run.</li>
   </ul>
 
@@ -46,15 +43,15 @@ Thank you.
 # Checklist before press "start" button
  <p><ul>
    <li>Disabled opensea night mode</li>
-   <li>You local / PC Chrome profile are copy into the folder "chrome_profile"</li>
    <li>Opensea collection link must end with "assets/create", <BR>
-     look like this : https://www.opensea.io/collection/yourcollectionsname/assets/create</li>
-   <li>untick "polycon blockchain</li>
-   <li>Select "src" folder</li>
+     look like this : https://www.opensea.io/collection/yourcollectionsname/<B>assets/create</b></li>
+  <li>If polygon please tick "polycon blockchain</li>
+  <li>Please check "complete listing" for listing and unchecked for create NFT without listing step</li>
+  <li>If polygon please tick "polycon blockchain!</li>
+  <li>Select your images & json "src" folder</li>
    <li>double check your image / json format: 1.png or 1.json</li>
-   <li>press "open chrome browser" button, will popup a new chrome browser</li> 
    </ul>
-     </p>
+  </p>
 
      
 # Enhanced section
