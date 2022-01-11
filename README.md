@@ -1,4 +1,5 @@
-<p><img src="src/images/fortune-cat-neko.png"></p>
+<img src="src/images/fortune-cat-neko.png" width="300">
+
 # bulk-upload-to-opensea v1.0
 A cross platform python IDE implementing selenium 4<BR>
 If you want to support this project or me, please check out my NFTs <BR>
