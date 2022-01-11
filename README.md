@@ -8,9 +8,7 @@ Thank you.
 
   Tutorial video v1.0
   https://www.youtube.com/watch?v=yEowEDfTSpA
-  
-  Tutorial video v1.5
-  Coming Soon!
+
   
   
 # Instructions
