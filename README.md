@@ -8,6 +8,9 @@ Thank you.
 
   Tutorial video v1.0
   https://www.youtube.com/watch?v=yEowEDfTSpA
+  ~ or ~
+  Easy step by step
+  https://www.youtube.com/watch?v=j0WguSodGf8
 
   
   
