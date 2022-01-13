@@ -6,11 +6,11 @@ If you want to support this project or me, please check out my NFTs <BR>
 https://opensea.io/collection/fortune-cat-neko and wish give it a little love or grab it.<BR>
 Thank you.
 
-  Tutorial video v1.0
-  https://www.youtube.com/watch?v=yEowEDfTSpA
-  ~ or ~
-  Easy step by step
-  https://www.youtube.com/watch?v=j0WguSodGf8
+  Tutorial video v1.0<BR>
+  https://www.youtube.com/watch?v=yEowEDfTSpA<BR>
+  ~ or ~<BR>
+  Easy step by step<BR>
+  https://www.youtube.com/watch?v=j0WguSodGf8<BR>
 
   
   
