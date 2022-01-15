@@ -26,7 +26,7 @@ Thank you.
    <li>Once running the script, will pop-up the application </li>
    <li>Fill in the variable for your project upload properties, </li>
      <ul>
-       <li>Opensea collection link: https://www.opensea.io/collection/yourcollectionsname/<B>assets/create</b></li>
+       <li>Opensea collection link: https://opensea.io/collection/yourcollectionsname/<B>assets/create</b></li>
         <li>Start number 1</li>
         <li>End number 9999 or any number</li>
         <li>Default price: 0.005</li>
@@ -46,7 +46,7 @@ Thank you.
  <p><ul>
    <li>Disabled opensea night mode</li>
    <li>Opensea collection link must end with "assets/create", <BR>
-     look like this : https://www.opensea.io/collection/yourcollectionsname/<B>assets/create</b></li>
+     look like this : https://opensea.io/collection/yourcollectionsname/<B>assets/create</b></li>
   <li>If polygon please tick "polycon blockchain</li>
   <li>Please check "complete listing" for listing and unchecked for create NFT without listing step</li>
   <li>If polygon please tick "polycon blockchain!</li>
