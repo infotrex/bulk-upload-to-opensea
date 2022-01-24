@@ -12,13 +12,14 @@ Thank you.
   Easy step by step<BR>
   https://www.youtube.com/watch?v=j0WguSodGf8<BR>
 
-#Changelog
+ 
+# Changelog
   <ul>
-    <li><b>Version 1.8</b>
+    <li><b>Version 1.8 (upload18.py)</b>
       <ul>
         <li>Duration support added. Maximum duration is 6 months. </li>
       </ul></li>
-    <li><b>Version 1.0</b>
+    <li><b>Version 1.0 (upload.py)</b>
       <ul><li>Standard version</li></ul>
     </li>
   </ul>
