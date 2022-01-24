@@ -1,6 +1,6 @@
 <img src="src/images/fortune-cat-neko.png" width="350">
 
-# bulk-upload-to-opensea v1.0
+# bulk-upload-to-opensea
 A cross platform python IDE implementing selenium 4<BR>
 If you want to support this project or me, please check out my NFTs <BR>
 https://opensea.io/collection/fortune-cat-neko and wish give it a little love or grab it.<BR>
@@ -12,7 +12,16 @@ Thank you.
   Easy step by step<BR>
   https://www.youtube.com/watch?v=j0WguSodGf8<BR>
 
-  
+#Changelog
+  <ul>
+    <li><b>Version 1.8</b>
+      <ul>
+        <li>Duration support added. Maximum duration is 6 months. </li>
+      </ul></li>
+    <li><b>Version 1.0</b>
+      <ul><li>Standard version</li></ul>
+    </li>
+  </ul>
   
 # Instructions
 <ul>
