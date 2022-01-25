@@ -17,7 +17,8 @@ Thank you.
   <ul>
     <li><b>Version 1.8 (upload18.py)</b>
       <ul>
-        <li>Duration support added. Maximum duration is 6 months. </li>
+        <li>Duration support added. Maximum duration is 6 months. <BR>
+        *Please install "pip install python-dateutil"</li>
       </ul></li>
     <li><b>Version 1.0 (upload.py)</b>
       <ul><li>Standard version</li></ul>
