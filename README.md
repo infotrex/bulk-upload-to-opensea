@@ -18,7 +18,10 @@ Thank you.
     <li><b>Version 1.8 (upload18.py)</b>
       <ul>
         <li>Duration support added. Maximum duration is 6 months. <BR>
-        *Please install "pip install python-dateutil"</li>
+        *Please install "pip install python-dateutil"<BR>
+          Recommend PC date format to mm/dd/yyyy
+          </li>
+          
       </ul></li>
     <li><b>Version 1.0 (upload.py)</b>
       <ul><li>Standard version</li></ul>
