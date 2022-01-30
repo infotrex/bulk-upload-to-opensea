@@ -20,8 +20,7 @@ Thank you.
         <li>Duration support added. Maximum duration is 6 months. <BR>
         *Please install "pip install python-dateutil"<BR>
           Recommend PC date format to mm/dd/yyyy
-          </li>
-          
+         </li>
       </ul></li>
     <li><b>Version 1.0 (upload.py)</b>
       <ul><li>Standard version</li></ul>
