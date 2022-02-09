@@ -26,7 +26,7 @@ Thank you.
       <ul><li>Standard version</li></ul>
     </li>
   </ul>
-  
+
 # Instructions
 <ul>
   <li>Download and extract this project in your local device (keep all files and folders that come with the repo in this folder)</li>
@@ -68,6 +68,8 @@ Thank you.
    </ul>
   </p>
 
+# ChromeDriver - WebDriver for Chrome	
+Download your compatible chromedriver.exe https://chromedriver.chromium.org/downloads
      
 # Enhanced section
 Will do a unique price setting for each individual nft image. <BR>
