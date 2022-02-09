@@ -256,20 +256,20 @@ def main_program_loop():
         
         
         wait_xpath('//*[@id="media"]')
-        imageUpload = driver.find_element_by_xpath('//*[@id="media"]')
+        imageUpload = driver.find_element(By.XPATH, '//*[@id="media"]')
         imagePath = os.path.abspath(file_path + "\\images\\" + str(start_numformat) + "." + loop_file_format)  # change folder here
         imageUpload.send_keys(imagePath)
         time.sleep(0.8)
 
-        name = driver.find_element_by_xpath('//*[@id="name"]')
+        name = driver.find_element(By.XPATH, '//*[@id="name"]')
         name.send_keys(loop_title + str(start_numformat))  # +1000 for other folders #change name before "#"
         time.sleep(0.8)
 
-        ext_link = driver.find_element_by_xpath('//*[@id="external_link"]')
+        ext_link = driver.find_element(By.XPATH, '//*[@id="external_link"]')
         ext_link.send_keys(loop_external_link)
         time.sleep(0.8)
 
-        desc = driver.find_element_by_xpath('//*[@id="description"]')
+        desc = driver.find_element(By.XPATH, '//*[@id="description"]')
         desc.send_keys(loop_description)
         time.sleep(0.8)
 
@@ -278,7 +278,7 @@ def main_program_loop():
            
             #print(str(jsonMetaData))
             wait_css_selector("button[aria-label='Add properties']")
-            properties = driver.find_element_by_css_selector("button[aria-label='Add properties']")
+            properties = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Add properties']")
             driver.execute_script("arguments[0].click();", properties)
             time.sleep(0.8)
 
@@ -287,18 +287,18 @@ def main_program_loop():
             jsonMetaData = jsonData['attributes']
 
             for key in jsonMetaData:
-                input1 = driver.find_element_by_xpath('//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[1]/div/div/input')
-                input2 = driver.find_element_by_xpath('//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[2]/div/div/input')
+                input1 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[1]/div/div/input')
+                input2 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[2]/div/div/input')
                 #print(str(key['trait_type']))
                 #print(str(key['value']))
                 input1.send_keys(str(key['trait_type']))
                 input2.send_keys(str(key['value']))
                 # driver.find_element_by_xpath('//button[text()="Add more"]').click()
-                addmore_button = driver.find_element_by_xpath('//button[text()="Add more"]')
+                addmore_button = driver.find_element(By.XPATH, '//button[text()="Add more"]')
                 driver.execute_script("arguments[0].click();", addmore_button)
             time.sleep(0.9)
 
-            driver.find_element_by_xpath('//button[text()="Save"]').click()
+            driver.find_element(By.XPATH, '//button[text()="Save"]').click()
             time.sleep(0.8)
 
 
@@ -306,12 +306,12 @@ def main_program_loop():
         # Select Polygon blockchain if applicable
         #if is_polygon.get():
 
-        create = driver.find_element_by_xpath('//*[@id="__next"]/div[1]/main/div/div/section/div[2]/form/div/div[1]/span/button')
+        create = driver.find_element(By.XPATH, '//*[@id="__next"]/div[1]/main/div/div/section/div[2]/form/div/div[1]/span/button')
         driver.execute_script("arguments[0].click();", create)
         time.sleep(0.8)
 
         wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
-        cross = driver.find_element_by_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
+        cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
         cross.click()
         time.sleep(0.8)
 
@@ -320,11 +320,11 @@ def main_program_loop():
         if is_listing.get():
             
             wait_xpath('//a[text()="Sell"]')
-            sell = driver.find_element_by_xpath('//a[text()="Sell"]')
+            sell = driver.find_element(By.XPATH, '//a[text()="Sell"]')
             driver.execute_script("arguments[0].click();", sell)
             
             wait_css_selector("input[placeholder='Amount']")
-            amount = driver.find_element_by_css_selector("input[placeholder='Amount']")
+            amount = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Amount']")
             amount.send_keys(str(loop_price))
             time.sleep(1)
 
@@ -376,7 +376,7 @@ def main_program_loop():
                 # driver.find_element_by_xpath('//*[@id="duration"]').click()
                 
                 wait_xpath('//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
-                select_durationday = driver.find_element_by_xpath('//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
+                select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
                 driver.execute_script("arguments[0].click();", select_durationday)
                 time.sleep(0.8)
                 
@@ -396,12 +396,12 @@ def main_program_loop():
                     print("invalid date format: change date format to MM/DD/YYYY or DD/MM/YYYY")
 
             wait_css_selector("button[type='submit']")
-            listing = driver.find_element_by_css_selector("button[type='submit']")
+            listing = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
             driver.execute_script("arguments[0].click();", listing)
             time.sleep(10)
             
             if is_polygon.get():
-                driver.find_element_by_xpath('//button[text()="Sign"]').click()
+                driver.find_element(By.XPATH, '//button[text()="Sign"]').click()
                 time.sleep(1)
 
             for handle in driver.window_handles:
@@ -411,7 +411,7 @@ def main_program_loop():
             # change the control to signin page
             driver.switch_to.window(login_page)
             wait_css_selector("button[data-testid='request-signature__sign']")
-            sign = driver.find_element_by_css_selector("button[data-testid='request-signature__sign']")
+            sign = driver.find_element(By.CSS_SELECTOR, "button[data-testid='request-signature__sign']")
             driver.execute_script("arguments[0].click();", sign)
             time.sleep(1)
 
