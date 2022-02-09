@@ -22,6 +22,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as ExpectedConditions
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
@@ -222,10 +223,11 @@ def main_program_loop():
     opt = Options()
     opt.add_argument('--headless')
     opt.add_experimental_option("debuggerAddress", "localhost:8989")
-    driver = webdriver.Chrome(
-        executable_path=project_path + "/chromedriver.exe",
-        chrome_options=opt,
-    )
+    # driver = webdriver.Chrome(
+    #     executable_path=project_path + "/chromedriver.exe",
+    #     chrome_options=opt,
+    # )
+    driver = webdriver.Chrome( service=Service(project_path + "/chromedriver.exe"), options=opt, )
     wait = WebDriverWait(driver, 60)
 
     ###wait for methods
