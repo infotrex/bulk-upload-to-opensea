@@ -97,7 +97,6 @@ def open_chrome_profile():
 
 
 def save_file_path():
-    #return os.path.join(sys.path[0], "Save_file.cloud") 
     return os.path.join(sys.path[0], "Save_gui.cloud") 
 
 
