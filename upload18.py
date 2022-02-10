@@ -369,31 +369,31 @@ def main_program_loop():
                 endmonth = (date.today() + relativedelta(months=+6)).month   
                 #print(endday, endmonth)
 
-            if duration_date != 30:
-                amount.send_keys(Keys.TAB)
-                time.sleep(0.8)
-                # wait_xpath('//*[@id="duration"]')
-                # driver.find_element_by_xpath('//*[@id="duration"]').click()
-                
-                wait_xpath('//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
-                select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
-                driver.execute_script("arguments[0].click();", select_durationday)
-                time.sleep(0.8)
-                
-                if lastdate.strftime('%x')[:2] == "12":
-                    #print("is month first")
-                    select_durationday.send_keys(str(endmonth))
-                    select_durationday.send_keys(str(endday))
-                    select_durationday.send_keys(Keys.ENTER)
-                    time.sleep(1)
-                elif lastdate.strftime('%x')[:2] == "31":
-                    #print("is day first")
-                    select_durationday.send_keys(str(endday))
-                    select_durationday.send_keys(str(endmonth))
-                    select_durationday.send_keys(Keys.ENTER)
-                    time.sleep(1)
-                else:
-                    print("invalid date format: change date format to MM/DD/YYYY or DD/MM/YYYY")
+            # if duration_date != 30:
+            amount.send_keys(Keys.TAB)
+            time.sleep(0.8)
+            # wait_xpath('//*[@id="duration"]')
+            # driver.find_element_by_xpath('//*[@id="duration"]').click()
+            
+            wait_xpath('//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
+            select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
+            driver.execute_script("arguments[0].click();", select_durationday)
+            time.sleep(0.8)
+            
+            if lastdate.strftime('%x')[:2] == "12":
+                #print("is month first")
+                select_durationday.send_keys(str(endmonth))
+                select_durationday.send_keys(str(endday))
+                select_durationday.send_keys(Keys.ENTER)
+                time.sleep(1)
+            elif lastdate.strftime('%x')[:2] == "31":
+                #print("is day first")
+                select_durationday.send_keys(str(endday))
+                select_durationday.send_keys(str(endmonth))
+                select_durationday.send_keys(Keys.ENTER)
+                time.sleep(1)
+            else:
+                print("invalid date format: change date format to MM/DD/YYYY or DD/MM/YYYY")
 
             wait_css_selector("button[type='submit']")
             listing = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
