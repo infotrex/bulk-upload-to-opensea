@@ -15,6 +15,10 @@ Thank you.
  
 # Changelog
   <ul>
+     <li><b>Version 1.8.1 (upload18.py)</b>
+      <ul>
+        <li>support "attributes" and "properties" metadata format</li>
+      </ul></li>
     <li><b>Version 1.8 (upload18.py)</b>
       <ul>
         <li>Duration support added. Maximum duration is 6 months. <BR>
