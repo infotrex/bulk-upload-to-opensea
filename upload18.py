@@ -42,7 +42,7 @@ lastdate = date(date.today().year, 12, 31)
 root = Tk()
 root.geometry('750x850')
 root.resizable(False, False)
-root.title("NFTs Upload to OpenSea v1.8")
+root.title("NFTs Upload to OpenSea v1.8.1")
   
 input_save_list = ["NFTs folder :", 0, 0, 0, 0, 0, 0, 0, 0, 0]
 main_directory = os.path.join(sys.path[0])
@@ -284,24 +284,43 @@ def main_program_loop():
 
             # checks if file exists
             jsonData = json.loads(open(file_path + "\\json\\"+ str(start_numformat) + ".json").read())
-            jsonMetaData = jsonData['attributes']
+            
+            if "attributes" in jsonData:
+                jsonMetaData = jsonData['attributes']
 
-            for key in jsonMetaData:
-                input1 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[1]/div/div/input')
-                input2 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[2]/div/div/input')
-                #print(str(key['trait_type']))
-                #print(str(key['value']))
-                input1.send_keys(str(key['trait_type']))
-                input2.send_keys(str(key['value']))
-                # driver.find_element_by_xpath('//button[text()="Add more"]').click()
-                addmore_button = driver.find_element(By.XPATH, '//button[text()="Add more"]')
-                driver.execute_script("arguments[0].click();", addmore_button)
-            time.sleep(0.9)
+                for key in jsonMetaData:
+                    input1 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[1]/div/div/input')
+                    input2 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[2]/div/div/input')
+                    #print(str(key['trait_type']))
+                    #print(str(key['value']))
+                    input1.send_keys(str(key['trait_type']))
+                    input2.send_keys(str(key['value']))
+                    addmore_button = driver.find_element(By.XPATH, '//button[text()="Add more"]')
+                    driver.execute_script("arguments[0].click();", addmore_button)
+                time.sleep(0.9)
 
-            driver.find_element(By.XPATH, '//button[text()="Save"]').click()
-            time.sleep(0.8)
+                driver.find_element(By.XPATH, '//button[text()="Save"]').click()
+                time.sleep(0.8)
 
+            elif "properties" in jsonData:
+                jsonMetaData = jsonData['properties']
+                
+                for key in jsonMetaData:
+                    input1 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[1]/div/div/input')
+                    input2 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[2]/div/div/input')
+                    #print(str(key['type']))
+                    #print(str(key['name']))
+                    input1.send_keys(str(key['type']))
+                    input2.send_keys(str(key['name']))
+                    addmore_button = driver.find_element(By.XPATH, '//button[text()="Add more"]')
+                    driver.execute_script("arguments[0].click();", addmore_button)
+                time.sleep(0.9)
 
+                driver.find_element(By.XPATH, '//button[text()="Save"]').click()
+                time.sleep(0.8)
+
+            else:
+                print("keys not found!") 
 
         # Select Polygon blockchain if applicable
         #if is_polygon.get():
@@ -369,7 +388,7 @@ def main_program_loop():
                 endmonth = (date.today() + relativedelta(months=+6)).month   
                 #print(endday, endmonth)
 
-            # if duration_date != 30:
+            #if duration_date != 30:
             amount.send_keys(Keys.TAB)
             time.sleep(0.8)
             # wait_xpath('//*[@id="duration"]')
@@ -473,4 +492,3 @@ except FileNotFoundError:
     pass
 #####BUTTON ZONE END#######
 root.mainloop()
-    
