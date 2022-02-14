@@ -55,6 +55,7 @@ Thank you.
    <li>Click and Select the “src” folder.</li>
    <li>Click and “save this form”</li>
      <li>Click “open chrome browser” will popup a new chrome browser, login / sign-in your metamask account. Download metamask extension if don’t have</li>
+     <li>Download I'm not robot captcha clicker extension link: https://chrome.google.com/webstore/detail/im-not-robot-captcha-clic/ceipnlhmjohemhfpbjdgeigkababhmjc/related?hl=en-US</li>
      <li>And click “start” to let it run.</li>
   </ul>
 
