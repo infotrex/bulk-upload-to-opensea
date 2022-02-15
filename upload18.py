@@ -329,10 +329,16 @@ def main_program_loop():
         driver.execute_script("arguments[0].click();", create)
         time.sleep(0.8)
 
-        wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
-        cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
-        cross.click()
-        time.sleep(0.8)
+        try:
+            time.sleep(10)
+            cross = driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')
+            cross.click()
+            time.sleep(0.8)
+        except:
+            wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
+            cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
+            cross.click()
+            time.sleep(0.8)
 
         main_page = driver.current_window_handle
 
