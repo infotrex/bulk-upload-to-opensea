@@ -14,7 +14,7 @@ Thank you.
 
 # Pay Service
   Why need to pay? I realise some user are over requested additional feature or addon over the limitation.
-  if you are really need additional function for this bulk upload please contact my twitter @klvntss. Thank you. 
+  if you are really need additional function for this bulk upload please contact my twitter @klvntss and the charge will by project basis. Thank you.
   
 # Changelog
   <ul>
