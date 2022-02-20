@@ -12,7 +12,9 @@ Thank you.
   Easy step by step<BR>
   https://www.youtube.com/watch?v=j0WguSodGf8<BR>
 
- 
+# Pay Service
+  You can contact me if you are request additional plugin for this bulk upload, such as Unlockable Content, Explicit & Sensitive Content, ETH blockchai swietch to Polygon, or python installation, remote assistant etc
+  
 # Changelog
   <ul>
      <li><b>Version 1.8.1 (upload18.py)</b>
