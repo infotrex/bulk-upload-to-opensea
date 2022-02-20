@@ -15,6 +15,11 @@ Thank you.
 # Pay Service
   Why need to pay? I realise some user are over requested additional feature or addon over the limitation.
   if you are really need additional function for this bulk upload please contact my twitter @klvntss and the charge will by project basis. Thank you.
+
+# Disclaimer
+  This free version script are not collect or capture any information while it running.
+  Make sure you are understand the all coding and process before running, please read line by line the original code before start running.
+  We will not be liable for any losses and/or damages for using of our script. Use at your own risk.
   
 # Changelog
   <ul>
