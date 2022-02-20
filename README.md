@@ -13,7 +13,8 @@ Thank you.
   https://www.youtube.com/watch?v=j0WguSodGf8<BR>
 
 # Pay Service
-  You can contact me if you are request additional plugin for this bulk upload, such as Unlockable Content, Explicit & Sensitive Content, ETH blockchai swietch to Polygon, or python installation, remote assistant etc
+  Why need to pay? I realise some user are over requested additional feature or addon over the limitation.
+  if you are really need additional function for this bulk upload please contact my twitter @klvntss. Thank you. 
   
 # Changelog
   <ul>
