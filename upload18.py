@@ -42,7 +42,7 @@ lastdate = date(date.today().year, 12, 31)
 root = Tk()
 root.geometry('750x850')
 root.resizable(False, False)
-root.title("NFTs Upload to OpenSea v1.8.1")
+root.title("NFTs Upload to OpenSea v1.8.2")
   
 input_save_list = ["NFTs folder :", 0, 0, 0, 0, 0, 0, 0, 0, 0]
 main_directory = os.path.join(sys.path[0])
@@ -71,7 +71,7 @@ imagelab.grid(row=0, columnspan=2)
 imagelab.bind("<Button-1>", lambda e:supportURL())
 
 is_polygon = BooleanVar()
-is_polygon.set(True)
+is_polygon.set(False)
 
 is_listing = BooleanVar()
 is_listing.set(True) 
@@ -299,8 +299,13 @@ def main_program_loop():
                     driver.execute_script("arguments[0].click();", addmore_button)
                 time.sleep(0.9)
 
-                driver.find_element(By.XPATH, '//button[text()="Save"]').click()
-                time.sleep(0.8)
+                try:
+                    save_button = driver.find_element(By.XPATH, '//button[text()="Save"]')
+                    driver.execute_script("arguments[0].click();", save_button)
+                    time.sleep(0.8)
+                except:
+                    driver.find_element(By.XPATH, '//button[text()="Save"]').click()
+                    time.sleep(0.8)
 
             elif "properties" in jsonData:
                 jsonMetaData = jsonData['properties']
@@ -316,8 +321,13 @@ def main_program_loop():
                     driver.execute_script("arguments[0].click();", addmore_button)
                 time.sleep(0.9)
 
-                driver.find_element(By.XPATH, '//button[text()="Save"]').click()
-                time.sleep(0.8)
+                try:
+                    save_button = driver.find_element(By.XPATH, '//button[text()="Save"]')
+                    driver.execute_script("arguments[0].click();", save_button)
+                    time.sleep(0.8)
+                except:
+                    driver.find_element(By.XPATH, '//button[text()="Save"]').click()
+                    time.sleep(0.8)
 
             else:
                 print("keys not found!") 
@@ -330,15 +340,20 @@ def main_program_loop():
         time.sleep(0.8)
 
         try:
-            time.sleep(10)
-            cross = driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')
-            cross.click()
-            time.sleep(0.8)
-        except:
             wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
             cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
             cross.click()
             time.sleep(0.8)
+        except:
+            wait_xpath('/html/body/div[6]/div/div/div/div[2]/button/i')
+            cross = driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')
+            cross.click()
+            time.sleep(0.8)
+            # wait_css_selector("i[aria-label='Close']")
+            # cross = driver.find_element_by_css_selector("i[aria-label='Close']")
+            # cross.click()
+            # time.sleep(0.8)
+  
 
         main_page = driver.current_window_handle
 
@@ -433,12 +448,35 @@ def main_program_loop():
                 if handle != main_page:
                     login_page = handle
                     #break
-            # change the control to signin page
-            driver.switch_to.window(login_page)
-            wait_css_selector("button[data-testid='request-signature__sign']")
-            sign = driver.find_element(By.CSS_SELECTOR, "button[data-testid='request-signature__sign']")
-            driver.execute_script("arguments[0].click();", sign)
-            time.sleep(1)
+            
+            driver.switch_to.window(login_page) 
+               
+            if is_polygon.get():
+                print("polygon")
+                wait_css_selector("button[data-testid='request-signature__sign']")
+                sign = driver.find_element(By.CSS_SELECTOR, "button[data-testid='request-signature__sign']")
+                driver.execute_script("arguments[0].click();", sign)
+                time.sleep(1)
+            else:
+                print("eth")
+                try:
+                    wait_xpath("//div[@class='signature-request-message__scroll-button']")
+                    scrollsign = driver.find_element(By.XPATH, "//div[@class='signature-request-message__scroll-button']")
+                    driver.execute_script("arguments[0].click();", scrollsign)
+                    time.sleep(1)
+                except: 
+                    driver.find_element(By.XPATH, "//div[@class='signature-request-message__scroll-button']").click()
+                    time.sleep(1)
+
+                try:
+                    wait_xpath('//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]')
+                    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]').click()
+                    time.sleep(1)
+                except:
+                    wait_xpath('//button[text()="Sign"]')
+                    metasign = driver.find_element(By.XPATH, '//button[text()="Sign"]')
+                    driver.execute_script("arguments[0].click();", metasign)
+                    time.sleep(1)
 
   
         #change control to main page
