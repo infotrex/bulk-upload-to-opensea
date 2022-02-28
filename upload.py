@@ -1,11 +1,538 @@
-# Python code obfuscated by www.development-tools.net 
- 
+import tkinter
+import subprocess
+from tkinter import *
+from tkinter import filedialog
+import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
+import tkinter.font as font
+from turtle import width
+from PIL import ImageTk, Image
+import urllib.request
+from io import BytesIO
+import os
+import io
+import sys
+import pickle
+import time
+from decimal import *
+import webbrowser
+# from click import command
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support import expected_conditions as ExpectedConditions
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.keys import Keys
+from datetime import timedelta  
+from dateutil.relativedelta import relativedelta
+from datetime import timedelta, date
+import locale
+import json 
+import ssl
 
-import base64, codecs
-magic = 'aW1wb3J0IHRraW50ZXIKaW1wb3J0IHN1YnByb2Nlc3MKZnJvbSB0a2ludGVyIGltcG9ydCAqCmZyb20gdGtpbnRlciBpbXBvcnQgZmlsZWRpYWxvZwppbXBvcnQgdGtpbnRlciBhcyB0awpmcm9tIHRraW50ZXIgaW1wb3J0IG1lc3NhZ2Vib3gKaW1wb3J0IHRraW50ZXIuZm9udCBhcyBmb250CmZyb20gUElMIGltcG9ydCBJbWFnZVRrLCBJbWFnZQppbXBvcnQgdXJsbGliLnJlcXVlc3QKZnJvbSBpbyBpbXBvcnQgQnl0ZXNJTwppbXBvcnQgb3MKaW1wb3J0IGlvCmltcG9ydCBzeXMKaW1wb3J0IHBpY2tsZQppbXBvcnQgdGltZQpmcm9tIGRlY2ltYWwgaW1wb3J0ICoKaW1wb3J0IHdlYmJyb3dzZXIKZnJvbSBzZWxlbml1bSBpbXBvcnQgd2ViZHJpdmVyCmZyb20gc2VsZW5pdW0ud2ViZHJpdmVyLmNvbW1vbi5ieSBpbXBvcnQgQnkKZnJvbSBzZWxlbml1bS53ZWJkcml2ZXIuc3VwcG9ydC53YWl0IGltcG9ydCBXZWJEcml2ZXJXYWl0CmZyb20gc2VsZW5pdW0ud2ViZHJpdmVyLmNocm9tZS5vcHRpb25zIGltcG9ydCBPcHRpb25zCmZyb20gc2VsZW5pdW0ud2ViZHJpdmVyLnN1cHBvcnQgaW1wb3J0IGV4cGVjdGVkX2NvbmRpdGlvbnMgYXMgRXhwZWN0ZWRDb25kaXRpb25zCmZyb20gc2VsZW5pdW0ud2ViZHJpdmVyLnN1cHBvcnQudWkgaW1wb3J0IFNlbGVjdAppbXBvcnQganNvbiAKaW1wb3J0IHNzbAppbXBvcnQgY2VydGlmaQoKcm9vdCA9IFRrKCkKCnJvb3QuZ2VvbWV0cnkoJzc1MHg3NTAnKQpyb290LnJlc2l6YWJsZShGYWxzZSwgRmFsc2UpCnJvb3QudGl0bGUoIk5GVHMgVXBsb2FkIHRvIE9wZW5TZWEgdjEuMCIpCiAgCmlucHV0X3NhdmVfbGlzdCA9IFsiTkZUcyBmb2xkZXIgOiIsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDBdCm1haW5fZGlyZWN0b3J5ID0gb3MucGF0aC5qb2luKHN5cy5wYXRoWzBdKQoKCmRlZiBzdXBwb3J0VVJMKCk6CiAgICB3ZWJicm93c2VyLm9wZW5fbmV3KCJodHRwczovL3d3dy5pbmZvdHJleC5uZXQvb3BlbnNlYS9zdXBwb3J0LmFzcD9yPWFwcCIpCgpkZWYgY29mZmVlVVJMKCk6CiAgICB3ZWJicm93c2VyLm9wZW5fbmV3KCJodHRwczovL2dpdGh1Yi5jb20vaW5mb3RyZXgvYnVsay11cGxvYWQtdG8tb3BlbnNlYS8jdGhhbmtzIikKCmNsYXNzIFdlYkltYWdlOgogICAgZGVmIF9faW5pdF9fKHNlbGYsIHVybCk6CiAgICAgICAgd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHVybCkgYXMgdToKICAgICAgICAgICAgcmF3X2RhdGEgPSB1LnJlYWQoKQogICAgICAgICNzZWxmLmltYWdlID0gdGsuUGhvdG9JbWFnZShkYXRhPWJhc2U2NC5lbmNvZGVieXRlcyhyYXdfZGF0YSkpCiAgICAgICAgaW1hZ2UgPSBJbWFnZS5vcGVuKGlvLkJ5dGVzSU8ocmF3X2RhdGEpKQogICAgICAgIHNlbGYuaW1hZ2UgPSBJbWFnZVRrLlBob3RvSW1hZ2UoaW1hZ2UpCgogICAgZGVmIGdldChzZWxmKToKICAgICAgICByZXR1cm4gc2VsZi5pbWFnZQppbWFnZXVybCA9ICJodHRwczovL3d3dy5pbmZvdHJleC5uZXQvb3BlbnNlYS9oZWFkZXIucG5nIgppbWcgPSBXZWJJbWFnZShpbWFnZXVybCkuZ2V0KCkKaW1hZ2VsYWIgPSB0ay5MYWJlbChyb290LCBpbWFnZT1pbWcpCmltYWdlbGFiLmdyaWQocm93PTAsIGNvbHVtbnNwYW49MikKaW1hZ2VsYWIuYmluZCgiPEJ1dHRvbi0xPiIsIGxhbWJkYSBlOnN1cHBvcnRVUkwoKSkKCmlzX3BvbHlnb24gPSBCb29sZWFuVmFyKCkKaXNfcG9seWdvbi5zZXQoVHJ1ZSkKCmlzX2xpc3RpbmcgPSBCb29sZWFuVmFyKCkKaXNfbGlzdGluZy5zZXQoVHJ1ZSkgCgppc19udW1mb3JtYXQgPSBCb29sZWFuVmFyKCkKaXNfbnVtZm9ybWF0LnNldChGYWxzZSkgCgoKCgpkZWYgb3Blbl9jaHJvbWVfcHJvZmlsZSgpOgogICAgc3VicHJvY2Vzcy5Qb3BlbigKICAgICAgICBbCiAgICAgICAgICAgICJzdGFydCIsCiAgICAgICAgICAgICJjaHJvbWUiLAogICAgICAgICAgICAiLS1yZW1vdGUtZGVidWdnaW5nLXBvcnQ9ODk4OSIsCiAgICAgICAgICAgICItLXVzZXItZGF0YS1kaXI9IiArIG1haW5fZGlyZWN0b3J5ICsgIi9jaHJvbWVfcHJvZmlsZSIsCiAgICAgICAgXSwKICAgICAgICBzaGVsbD1UcnVlLAogICAgKQoKCmRlZiBzYXZlX2ZpbGVfcGF0aCgpOgogICAgI3JldHVybiBvcy5wYXRoLmpvaW4oc3lzLnBhdGhbMF0sICJTYXZlX2ZpbGUuY2xvdWQiKSAKICAgIHJldHVybiBvcy5wYXRoLmpvaW4oc3lzLnBhdGhbMF0sICJTYXZlX2d1aS5jbG91ZCIpIAoKCiMgYXNrIGZvciBkaXJlY3Rvcnkgb24gY2xpY2tpbmcgYnV0dG9uLCBjaGFuZ2VzIGJ1dHRvbiBuYW1lLgpkZWYgdXBsb2FkX2ZvbGRlcl9pbnB1dCgpOgogICAgZ2xvYmFsIHVwbG9hZF9wYXRoCiAgICB1cGxvYWRfcGF0aCA9IGZpbGVkaWFsb2cuYXNrZGlyZWN0b3J5KCkKICAgIE5hbWVfY2hhbmdlX2ltZ19mb2xkZXJfYnV0dG9uKHVwbG9hZF9wYXRoKQoKZGVmIE5hbWVfY2hhbmdlX2ltZ19mb2xkZXJfYnV0dG9uKHVwbG9hZF9mb2xkZXJfaW5wdXQpOgogICAgdXBsb2FkX2ZvbGRlcl9pbnB1dF9idXR0b25bInRleHQiXSA9IHVwbG9hZF9mb2xkZXJfaW5wdXQKCmRlZiBpc19udW1lcmljKHZhbCk6CglpZiBzdHIodmFsKS5pc2RpZ2l0KCk6CgkJcmV0dXJuIFRydWUKCWVsaWYgc3RyKHZhbCkucmVwbGFjZSgnLicsJycsMSkuaXNkaWdpdCgpOgoJCXJldHVybiBUcnVlCgllbHNlOgoJCXJldHVybiBGYWxzZQoKY2xhc3MgSW5wdXRGaWVsZDoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBsYWJlbCwgcm93X2lvLCBjb2x1bW5faW8sIHBvcywgIG1hc3Rlcj1yb290KToKICAgICAgICBzZWxmLm1hc3RlciA9IG1hc3RlcgogICAgICAgIHNlbGYuaW5wdXRfZmllbGQgPSBFbnRyeShzZWxmLm1hc3Rlciwgd2lkdGg9NjApCiAgICAgICAgc2VsZi5pbnB1dF9maWVsZC5ncmlkKGlwYWR5PTMpCiAgICAgICAgc2VsZi5pbnB1dF9maWVsZC5sYWJlbCA9IExhYmVsKG1hc3RlciwgdGV4dD1sYWJlbCwgYW5jaG9yPSJ3Iiwgd2lkdGg9MjAsIGhlaWdodD0xICkKICAgICAgICBzZWxmLmlucHV0X2ZpZWxkLmxhYmVsLmdyaWQocm93PXJvd19pbywgY29sdW1uPWNvbHVtbl9pbywgcGFkeD0xMiwgcGFkeT0yKQogICAgICAgIHNlbGYuaW5wdXRfZmllbGQuZ3JpZChyb3c9cm93X2lvLCBjb2x1bW49Y29sdW1uX2lvICsgMSwgcGFkeD0xMiwgcGFkeT0yKQogICAgICAgIHRyeToKICAgICAgICAgICAgd2l0aCBvcGVuKHNhdmVfZmlsZV9wYXRoKCksICJyYiIpIGFzIGluZmlsZToKICAgICAgICAgICAgICAgIG5ld19kaWN0ID0gcGlja2xlLmxvYWQoaW5maWxlKQogICAgICAgICAgICAgICAgc2VsZi5pbnNlcnRfdGV4dChuZXdfZGljdFtwb3NdKQogICAgICAgIGV4Y2VwdCBGaWxlTm90Rm91bmRFcnJvcjoKICAgICAgICAgICAgcGFzcwogICAgICAgIAogICAgZGVmIGluc2VydF90ZXh0KHNlbGYsIHRleHQpOgogICAgICAgIHNlbGYuaW5wdXRfZmllbGQuZGVsZXRlKDAsICJlbmQiKQogICAgICAgIHNlbGYuaW5wdXRfZmllbGQuaW5zZXJ0KDAsIHRleHQpCgogICAgZGVmIHNhdmVfaW5wdXRzKHNlbGYsIHBvcyk6CiAgICAgICAgI21lc3NhZ2Vib3guc2hvd3dhcm5pbmcoInNob3d3YXJuaW5nIiwgIldhcm5pbmciKQogICAgICAgIGlucHV0X3NhdmVfbGlzdC5pbnNlcnQocG9zLCBzZWxmLmlucHV0X2ZpZWxkLmdldCgpKQogICAgICAgIHdpdGggb3BlbihzYXZlX2ZpbGVfcGF0aCgpLCAid2IiKSBhcyBvdXRmaWxlOgogICAgICAgICAgICBwaWNrbGUuZHVtcChpbnB1dF9zYXZlX2xpc3QsIG91dGZpbGUpCiAgICAgICAgICAgIAogICAgZGVmIHZhbGlkYXRlX2lucHV0cyhzZWxmLCBtYXhsZW4sIHR5cGUsIG1lc3NhZ2UpOgoKICAgICAgICBpZiB0eXBlID09IDAgYW5kIChsZW4oc2VsZi5pbnB1dF9maWVsZC5nZ'
-love = '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'
-god = 'QuZ2V0KCk6CiAgICAgICAgICAgIHN0YXJ0X251bWZvcm1hdCA9IGYieyBzdGFydF9udW06MDR9IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgICBzdGFydF9udW1mb3JtYXQgPSBmInsgc3RhcnRfbnVtOjAxfSIKCiAgICAgICAgcHJpbnQoIlN0YXJ0IGNyZWF0aW5nIE5GVCAiICsgIGxvb3BfdGl0bGUgKyBzdHIoc3RhcnRfbnVtZm9ybWF0KSkKICAgICAgICBwcmludCgnbnVtYmVyICcsICBzdGFydF9udW1mb3JtYXQpCiAgICAgICAgZHJpdmVyLmdldChjb2xsZWN0aW9uX2xpbmspCiAgICAgICAgCiAgICAgICAgCiAgICAgICAgd2FpdF94cGF0aCgnLy8qW0BpZD0ibWVkaWEiXScpCiAgICAgICAgaW1hZ2VVcGxvYWQgPSBkcml2ZXIuZmluZF9lbGVtZW50X2J5X3hwYXRoKCcvLypbQGlkPSJtZWRpYSJdJykKICAgICAgICBpbWFnZVBhdGggPSBvcy5wYXRoLmFic3BhdGgoZmlsZV9wYXRoICsgIlxcaW1hZ2VzXFwiICsgc3RyKHN0YXJ0X251bWZvcm1hdCkgKyAiLiIgKyBsb29wX2ZpbGVfZm9ybWF0KSAgIyBjaGFuZ2UgZm9sZGVyIGhlcmUKICAgICAgICBpbWFnZVVwbG9hZC5zZW5kX2tleXMoaW1hZ2VQYXRoKQogICAgICAgIHRpbWUuc2xlZXAoMC44KQoKICAgICAgICBuYW1lID0gZHJpdmVyLmZpbmRfZWxlbWVudF9ieV94cGF0aCgnLy8qW0BpZD0ibmFtZSJdJykKICAgICAgICBuYW1lLnNlbmRfa2V5cyhsb29wX3RpdGxlICsgc3RyKHN0YXJ0X251bWZvcm1hdCkpICAjICsxMDAwIGZvciBvdGhlciBmb2xkZXJzICNjaGFuZ2UgbmFtZSBiZWZvcmUgIiMiCiAgICAgICAgdGltZS5zbGVlcCgwLjgpCgogICAgICAgIGV4dF9saW5rID0gZHJpdmVyLmZpbmRfZWxlbWVudF9ieV94cGF0aCgnLy8qW0BpZD0iZXh0ZXJuYWxfbGluayJdJykKICAgICAgICBleHRfbGluay5zZW5kX2tleXMobG9vcF9leHRlcm5hbF9saW5rKQogICAgICAgIHRpbWUuc2xlZXAoMC44KQoKICAgICAgICBkZXNjID0gZHJpdmVyLmZpbmRfZWxlbWVudF9ieV94cGF0aCgnLy8qW0BpZD0iZGVzY3JpcHRpb24iXScpCiAgICAgICAgZGVzYy5zZW5kX2tleXMobG9vcF9kZXNjcmlwdGlvbikKICAgICAgICB0aW1lLnNsZWVwKDAuOCkKCiAgICAgICAgI2pzb25EYXRhID0gSlNPTihmaWxlX3BhdGggKyAiL2pzb24vIisgc3RyKHN0YXJ0X251bSkgKyAiLmpzb24iKS5yZWFkRnJvbUZpbGUoKQoKICAgICAgICBqc29uRmlsZSA9IGZpbGVfcGF0aCArICIvanNvbi8iKyBzdHIoc3RhcnRfbnVtZm9ybWF0KSArICIuanNvbiIKICAgICAgICBpZiBvcy5wYXRoLmlzZmlsZShqc29uRmlsZSkgYW5kIG9zLmFjY2Vzcyhqc29uRmlsZSwgb3MuUl9PSyk6CiAgICAgICAgICAgCiAgICAgICAgICAgICNwcmludChzdHIoanNvbk1ldGFEYXRhKSkKICAgICAgICAgICAgd2FpdF9jc3Nfc2VsZWN0b3IoImJ1dHRvblthcmlhLWxhYmVsPSdBZGQgcHJvcGVydGllcyddIikKICAgICAgICAgICAgcHJvcGVydGllcyA9IGRyaXZlci5maW5kX2VsZW1lbnRfYnlfY3NzX3NlbGVjdG9yKCJidXR0b25bYXJpYS1sYWJlbD0nQWRkIHByb3BlcnRpZXMnXSIpCiAgICAgICAgICAgIGRyaXZlci5leGVjdXRlX3NjcmlwdCgiYXJndW1lbnRzWzBdLmNsaWNrKCk7IiwgcHJvcGVydGllcykKICAgICAgICAgICAgdGltZS5zbGVlcCgwLjgpCgogICAgICAgICAgICAjIGpzb25EYXRhID0gSlNPTihvcy5nZXRjd2QoKSArICIvZGF0YS8iKyBzdHIoc3RhcnRfbnVtKSArICIuanNvbiIpLnJlYWRGcm9tRmlsZSgpCiAgICAgICAgICAgICMganNvbk1ldGFEYXRhID0ganNvbkRhdGFbJ2F0dHJpYnV0ZXMnXQoKICAgICAgICAgICAgICMgY2hlY2tzIGlmIGZpbGUgZXhpc3RzCiAgICAgICAgICAgIGpzb25EYXRhID0ganNvbi5sb2FkcyhvcGVuKGZpbGVfcGF0aCArICJcXGpzb25cXCIrIHN0cihzdGFydF9udW1mb3JtYXQpICsgIi5qc29uIikucmVhZCgpKQogICAgICAgICAgICBqc29uTWV0YURhdGEgPSBqc29uRGF0YVsnYXR0cmlidXRlcyddCgogICAgICAgICAgICBmb3Iga2V5IGluIGpzb25NZXRhRGF0YToKICAgICAgICAgICAgICAgIGlucHV0MSA9IGRyaXZlci5maW5kX2VsZW1lbnRfYnlfeHBhdGgoJy8vdGJvZHlbQGNsYXNzPSJBc3NldFRyYWl0c0Zvcm0tLWJvZHkiXS90cltsYXN0KCldL3RkWzFdL2Rpdi9kaXYvaW5wdXQnKQogICAgICAgICAgICAgICAgaW5wdXQyID0gZHJpdmVyLmZpbmRfZWxlbWVudF9ieV94cGF0aCgnLy90Ym9keVtAY2xhc3M9IkFzc2V0VHJhaXRzRm9ybS0tYm9keSJdL3RyW2xhc3QoKV0vdGRbMl0vZGl2L2Rpdi9pbnB1dCcpCiAgICAgICAgICAgICAgICAjcHJpbnQoc3RyKGtleVsndHJhaXRfdHlwZSddKSkKICAgICAgICAgICAgICAgICNwcmludChzdHIoa2V5Wyd2YWx1ZSddKSkKICAgICAgICAgICAgICAgIGlucHV0MS5zZW5kX2tleXMoc3RyKGtleVsndHJhaXRfdHlwZSddKSkKICAgICAgICAgICAgICAgIGlucHV0Mi5zZW5kX2tleXMoc3RyKGtleVsndmFsdWUnXSkpCiAgICAgICAgICAgICAgICAjIGRyaXZlci5maW5kX2VsZW1lbnRfYnlfeHBhdGgoJy8vYnV0dG9uW3RleHQoKT0iQWRkIG1vcmUiXScpLmNsaWNrKCkKICAgICAgICAgICAgICAgIGFkZG1vcmVfYnV0dG9uID0gZHJpdmVyLmZpbmRfZWxlbWVudF9ieV94cGF0aCgnLy9idXR0b25bdGV4dCgpPSJBZGQgbW9yZSJdJykKICAgICAgICAgICAgICAgIGRyaXZlci5leGVjdXRlX3NjcmlwdCgiYXJndW1lbnRzWzBdLmNsaWNrKCk7IiwgYWRkbW9yZV9idXR0b24pCiAgICAgICAgICAgIHRpbWUuc2xlZXAoMC45KQoKICAgICAgICAgICAgZHJpdmVyLmZpbmRfZWxlbWVudF9ieV94cGF0aCgnLy9idXR0b25bdGV4dCgpPSJTYXZlIl0nKS5jbGljaygpCiAgICAgICAgICAgIHRpbWUuc2xlZXAoMC44KQoKCgogICAgICAgICMgU2VsZWN0IFBvbHlnb24gYmxvY2tjaGFpbiBpZiBhcHBsaWNhYmxlCiAgICAgICAgI2lmIGlzX3BvbHlnb24uZ2V0KCk6CiAgICAgICAgICAgICMgYmxvY2tjaGFpbl9idXR0b24gPSBkcml2ZXIuZmluZF9lbGVtZW50KEJ5LlhQQVRILCAnLy8qW0BpZD0iX19uZXh0Il0vZGl2WzFdL21haW4vZGl2L2Rpdi9zZWN0aW9uL2Rpdi9mb3JtL2Rpdls3XS9kaXYvZGl2WzJdJykKICAgICAgICAgICAgIyBibG9ja2NoYWluX2J1dHRvbi5jbGljaygpCiAgICAgICAgICAgICMgcG9seWdvbl9idXR0b25fbG9jYXRpb24gPSAnLy9zcGFuW25vcm1hbGl6ZS1zcGFjZSgpID0gIk11bWJhaSJdJwogICAgICAgICAgICAjIHdhaXQudW50aWwoRXhwZWN0ZWRDb25kaXRpb25zLnByZXNlbmNlX29mX2VsZW1lbnRfbG9jYXRlZCgKICAgICAgICAgICAgIyAgICAgKEJ5LlhQQVRILCBwb2x5Z29uX2J1dHRvbl9sb2NhdGlvbikpKQogICAgICAgICAgICAjIHBvbHlnb25fYnV0dG9uID0gZHJpdmVyLmZpbmRfZWxlbWVudCgKICAgICAgICAgICAgIyAgICAgQnkuWFBBVEgsIHBvbHlnb25fYnV0dG9uX2xvY2F0aW9uKQogICAgICAgICAgICAjIHBvbHlnb25fYnV0dG9uLmNsaWNrKCkKCgogICAgICAgIGNyZWF0ZSA9IGRyaXZlci5maW5kX2VsZW1lbnRfYnlfeHBhdGgoJy8vKltAaWQ9Il9fbmV4dCJdL2RpdlsxXS9tYWluL2Rpdi9kaXYvc2VjdGlvbi9kaXZbMl0vZm9ybS9kaXYvZGl2WzFdL3NwYW4vYnV0dG9uJykKICAgICAgICBkcml2ZXIuZXhlY3V0ZV9zY3JpcHQoImFyZ3VtZW50c1swXS5jbGljaygpOyIsIGNyZWF0ZSkKICAgICAgICB0aW1lLnNsZWVwKDAuOCkKCiAgICAgICAgIyB3YWl0X2Nzc19zZWxlY3RvcigiaVthcmlhLWxhYmVsPSdDbG9zZSddIikKICAgICAgICAjIGNyb3NzID0gZHJpdmVyLmZpbmRfZWxlbWVudF9ieV9jc3Nfc2VsZWN0b3IoImlbYXJpYS1sYWJlbD0nQ2xvc2UnXSIpCiAgICAgICAgIyBjcm9zcy5jbGljaygpCgogICAgICA'
-destiny = 'tVUqunKEsrUOuqTtbWl9bqT1fY2WiMUxiMTy2JmIqY2Ecqv9xnKLiMTy2Y2EcqyflKF9vqKE0o24inFpcPvNtVPNtVPNtL3Wip3ZtCFOxpzy2MKVhMzyhMS9yoTIgMJ50K2W5K3ujLKEbXPpinUEgoP9vo2E5Y2Ecqyf1KF9xnKLiMTy2Y2Ecqv9xnKMoZy0iLaI0qT9hY2xaXDbtVPNtVPNtVTAlo3AmYzAfnJAeXPxXVPNtVPNtVPO0nJ1yYaAfMJIjXQNhBPxXPvNtVPNtVPNtoJScoy9jLJqyVQ0tMUWcqzIlYzA1paWyoaEsq2yhMT93K2uuozEfMDbXVPNtVPNtVPOcMvOcp19fnKA0nJ5aYzqyqPtcBtbtVPNtVPNtVPNtVPO3LJy0K3ujLKEbXPpiYlcoDTyxCFWsK25yrUDvKF9xnKMoZI0ioJScov9xnKLiMTy2Y2EcqyfkKF9xnKLip3OuoyflKF9uWlxXVPNtVPNtVPNtVPNtp2IfoPN9VTElnKMypv5znJ5xK2IfMJ1yoaEsLaysrUOuqTtbWl8iXygNnJD9Vy9sozI4qPWqY2EcqyfkKF9gLJyhY2Ecqv9xnKLiMTy2JmSqY2Ecqv9mpTShJmWqY2RaXDbtVPNtVPNtVPNtVPOmMJkfYzAfnJAeXPxXPvNtVPNtVPNtVPNtVUqunKEsL3AmK3AyoTIwqT9lXPWcoaO1qSgjoTSwMJuioTEypw0aDJ1iqJ50W10vXDbtVPNtVPNtVPNtVPOuoJ91oaDtCFOxpzy2MKVhMzyhMS9yoTIgMJ50K2W5K2Amp19mMJkyL3EipvtvnJ5jqKEopTkuL2Ibo2kxMKV9W0Sgo3IhqPqqVvxXVPNtVPNtVPNtVPNtLJ1iqJ50YaAyozEsn2I5plumqUVboT9ipS9jpzywMFxcPvNtVPNtVPNtVPNtVUEcoJHhp2kyMKNbZFxXPvNtVPNtVPNtVPNtVUqunKEsL3AmK3AyoTIwqT9lXPWvqKE0o25oqUyjMG0ap3IvoJy0W10vXDbtVPNtVPNtVPNtVPOfnKA0nJ5aVQ0tMUWcqzIlYzMcozEsMJkyoJIhqS9vrI9wp3Asp2IfMJA0o3VbVzW1qUEioyg0rKOyCFqmqJWgnKDaKFVcPvNtVPNtVPNtVPNtVTkcp3EcozphL2kcL2fbXDbtVPNtVPNtVPN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'
-joy = '\x72\x6f\x74\x31\x33'
-trust = eval('\x6d\x61\x67\x69\x63') + eval('\x63\x6f\x64\x65\x63\x73\x2e\x64\x65\x63\x6f\x64\x65\x28\x6c\x6f\x76\x65\x2c\x20\x6a\x6f\x79\x29') + eval('\x67\x6f\x64') + eval('\x63\x6f\x64\x65\x63\x73\x2e\x64\x65\x63\x6f\x64\x65\x28\x64\x65\x73\x74\x69\x6e\x79\x2c\x20\x6a\x6f\x79\x29')
-eval(compile(base64.b64decode(eval('\x74\x72\x75\x73\x74')),'<string>','exec'))
+ssl._create_default_https_context = ssl._create_unverified_context
+
+#check local date format
+locale.setlocale(locale.LC_ALL, '')
+lastdate = date(date.today().year, 12, 31)
+
+root = Tk()
+root.geometry('750x850')
+root.resizable(False, False)
+root.title("NFTs Upload to OpenSea v1.8.2")
+  
+input_save_list = ["NFTs folder :", 0, 0, 0, 0, 0, 0, 0, 0, 0]
+main_directory = os.path.join(sys.path[0])
+
+
+def supportURL():
+    webbrowser.open_new("https://www.infotrex.net/opensea/support.asp?r=app")
+
+def coffeeURL():
+    webbrowser.open_new("https://github.com/infotrex/bulk-upload-to-opensea/#thanks")
+
+class WebImage:
+    def __init__(self, url):
+        with urllib.request.urlopen(url) as u:
+            raw_data = u.read()
+        #self.image = tk.PhotoImage(data=base64.encodebytes(raw_data))
+        image = Image.open(io.BytesIO(raw_data))
+        self.image = ImageTk.PhotoImage(image)
+
+    def get(self):
+        return self.image
+imageurl = "https://www.infotrex.net/opensea/header.png"
+img = WebImage(imageurl).get()
+imagelab = tk.Label(root, image=img)
+imagelab.grid(row=0, columnspan=2)
+imagelab.bind("<Button-1>", lambda e:supportURL())
+
+is_polygon = BooleanVar()
+is_polygon.set(False)
+
+is_listing = BooleanVar()
+is_listing.set(True) 
+
+is_numformat = BooleanVar()
+is_numformat.set(False) 
+
+
+def save_duration():
+    duration_value.set(value=duration_value.get())
+    # print(duration_value.get())
+
+def open_chrome_profile():
+    subprocess.Popen(
+        [
+            "start",
+            "chrome",
+            "--remote-debugging-port=8989",
+            "--user-data-dir=" + main_directory + "/chrome_profile",
+        ],
+        shell=True,
+    )
+
+
+def save_file_path():
+    return os.path.join(sys.path[0], "Save_gui.cloud") 
+
+
+# ask for directory on clicking button, changes button name.
+def upload_folder_input():
+    global upload_path
+    upload_path = filedialog.askdirectory()
+    Name_change_img_folder_button(upload_path)
+
+def Name_change_img_folder_button(upload_folder_input):
+    upload_folder_input_button["text"] = upload_folder_input
+
+def is_numeric(val):
+	if str(val).isdigit():
+		return True
+	elif str(val).replace('.','',1).isdigit():
+		return True
+	else:
+		return False
+
+
+class InputField:
+    def __init__(self, label, row_io, column_io, pos,  master=root):
+        self.master = master
+        self.input_field = Entry(self.master, width=60)
+        self.input_field.grid(ipady=3)
+        self.input_field.label = Label(master, text=label, anchor="w", width=20, height=1 )
+        self.input_field.label.grid(row=row_io, column=column_io, padx=12, pady=2)
+        self.input_field.grid(row=row_io, column=column_io + 1, padx=12, pady=2)
+        
+        try:
+            with open(save_file_path(), "rb") as infile:
+                new_dict = pickle.load(infile)
+                self.insert_text(new_dict[pos])
+        except FileNotFoundError:
+            pass
+        
+    def insert_text(self, text):
+        self.input_field.delete(0, "end")
+        self.input_field.insert(0, text)
+
+    def save_inputs(self, pos):
+        #messagebox.showwarning("showwarning", "Warning")
+        input_save_list.insert(pos, self.input_field.get())
+        #print(self.input_field.get())
+        with open(save_file_path(), "wb") as outfile:
+            pickle.dump(input_save_list, outfile)
+            
+    def validate_inputs(self, maxlen, type, message):
+
+        if type == 0 and (len(self.input_field.get()) == 0 or (self.input_field.get()).isdigit() != True or len(self.input_field.get()) > maxlen):
+            messagebox.showwarning("showwarning", message)
+                
+        elif type == 1 and (len(self.input_field.get()) == 0 or is_numeric(self.input_field.get()) == False or len(self.input_field.get()) >= maxlen):
+            messagebox.showwarning("showwarning", message)       
+                
+        elif type == 2 and ( len(self.input_field.get()) == 0 or len(self.input_field.get()) > maxlen):
+            messagebox.showwarning("showwarning", message)
+               
+        else:
+            return True     
+        
+
+###input objects###
+collection_link_input = InputField("OpenSea Collection Link:", 2, 0, 1)
+start_num_input = InputField("Start Number:", 3, 0, 2)
+end_num_input = InputField("End Number:", 4, 0, 3)
+price = InputField("Default Price:", 5, 0, 4)
+title = InputField("Title:", 6, 0, 5)
+description = InputField("Description:", 7, 0, 6)
+file_format = InputField("NFT Image Format:", 8, 0, 7)
+external_link = InputField("External link:", 9, 0, 8)
+
+
+def save():
+
+    if len(start_num_input.input_field.get()) == 0 or len(end_num_input.input_field.get()) == 0 or (int(end_num_input.input_field.get()) < int(start_num_input.input_field.get())):
+        #messagebox.showwarning("showwarning", "End number should greater than start number!")
+        print ("true")
+    elif len( start_num_input.input_field.get()) == 0 or len(end_num_input.input_field.get()) > 5 :
+        #messagebox.showwarning("showwarning", "Start / end number range 0 - 99999")
+        print ("true")
+    else:
+        collection_link_input.validate_inputs(200, 2, 'Collection link required')
+        price.validate_inputs(100, 1, 'Price required')
+        title.validate_inputs(100, 2, 'title required')
+        description.validate_inputs(200, 2, 'description required')
+        file_format.validate_inputs(100, 2, 'file format required - png, jpg, jpeg')
+        external_link.validate_inputs(100, 3, '')
+     
+
+    input_save_list.insert(0, upload_path)
+    collection_link_input.save_inputs(1)
+    start_num_input.save_inputs(2)
+    end_num_input.save_inputs(3)
+    price.save_inputs(4)
+    title.save_inputs(5)
+    description.save_inputs(6)
+    file_format.save_inputs(7)
+    external_link.save_inputs(8)
+    
+
+    
+
+def main_program_loop():
+
+    if len(end_num_input.input_field.get()) > 5 :
+        messagebox.showwarning("showwarning", "Start / end number range 0 - 99999")
+        sys.exit()
+
+    project_path = main_directory
+    file_path = upload_path
+    collection_link = collection_link_input.input_field.get()
+    start_num = int(start_num_input.input_field.get())
+    end_num = int(end_num_input.input_field.get())
+    loop_price = float(price.input_field.get())
+    loop_title = title.input_field.get()
+    loop_file_format = file_format.input_field.get()
+    loop_external_link = str(external_link.input_field.get())
+    loop_description = description.input_field.get()
+
+    ##chromeoptions
+    opt = Options()
+    opt.add_argument('--headless')
+    opt.add_experimental_option("debuggerAddress", "localhost:8989")
+    # driver = webdriver.Chrome(
+    #     executable_path=project_path + "/chromedriver.exe",
+    #     chrome_options=opt,
+    # )
+    driver = webdriver.Chrome( service=Service(project_path + "/chromedriver.exe"), options=opt, )
+    wait = WebDriverWait(driver, 60)
+
+    ###wait for methods
+    def wait_css_selector(code):
+        wait.until(
+            ExpectedConditions.presence_of_element_located((By.CSS_SELECTOR, code))
+        )
+        
+    def wait_css_selectorTest(code):
+        wait.until(
+            ExpectedConditions.elementToBeClickable((By.CSS_SELECTOR, code))
+        )    
+
+    def wait_xpath(code):
+        wait.until(ExpectedConditions.presence_of_element_located((By.XPATH, code)))
+
+
+    while end_num >= start_num:
+        if is_numformat.get():
+            start_numformat = f"{ start_num:04}"
+        else:
+             start_numformat = f"{ start_num:01}"
+
+        print("Start creating NFT " +  loop_title + str(start_numformat))
+        print('number ',  start_numformat)
+        driver.get(collection_link)
+        
+        
+        wait_xpath('//*[@id="media"]')
+        imageUpload = driver.find_element(By.XPATH, '//*[@id="media"]')
+        imagePath = os.path.abspath(file_path + "\\images\\" + str(start_numformat) + "." + loop_file_format)  # change folder here
+        imageUpload.send_keys(imagePath)
+        time.sleep(0.8)
+
+        name = driver.find_element(By.XPATH, '//*[@id="name"]')
+        name.send_keys(loop_title + str(start_numformat))  # +1000 for other folders #change name before "#"
+        time.sleep(0.8)
+
+        ext_link = driver.find_element(By.XPATH, '//*[@id="external_link"]')
+        ext_link.send_keys(loop_external_link)
+        time.sleep(0.8)
+
+        desc = driver.find_element(By.XPATH, '//*[@id="description"]')
+        desc.send_keys(loop_description)
+        time.sleep(0.8)
+
+        jsonFile = file_path + "/json/"+ str(start_numformat) + ".json"
+        if os.path.isfile(jsonFile) and os.access(jsonFile, os.R_OK):
+           
+            #print(str(jsonMetaData))
+            wait_css_selector("button[aria-label='Add properties']")
+            properties = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Add properties']")
+            driver.execute_script("arguments[0].click();", properties)
+            time.sleep(0.8)
+
+            # checks if file exists
+            jsonData = json.loads(open(file_path + "\\json\\"+ str(start_numformat) + ".json").read())
+            
+            if "attributes" in jsonData:
+                jsonMetaData = jsonData['attributes']
+
+                for key in jsonMetaData:
+                    input1 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[1]/div/div/input')
+                    input2 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[2]/div/div/input')
+                    #print(str(key['trait_type']))
+                    #print(str(key['value']))
+                    input1.send_keys(str(key['trait_type']))
+                    input2.send_keys(str(key['value']))
+                    addmore_button = driver.find_element(By.XPATH, '//button[text()="Add more"]')
+                    driver.execute_script("arguments[0].click();", addmore_button)
+                time.sleep(0.9)
+
+                try:
+                    save_button = driver.find_element(By.XPATH, '//button[text()="Save"]')
+                    driver.execute_script("arguments[0].click();", save_button)
+                    time.sleep(0.8)
+                except:
+                    driver.find_element(By.XPATH, '//button[text()="Save"]').click()
+                    time.sleep(0.8)
+
+            elif "properties" in jsonData:
+                jsonMetaData = jsonData['properties']
+                
+                for key in jsonMetaData:
+                    input1 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[1]/div/div/input')
+                    input2 = driver.find_element(By.XPATH, '//tbody[@class="AssetTraitsForm--body"]/tr[last()]/td[2]/div/div/input')
+                    #print(str(key['type']))
+                    #print(str(key['name']))
+                    input1.send_keys(str(key['type']))
+                    input2.send_keys(str(key['name']))
+                    addmore_button = driver.find_element(By.XPATH, '//button[text()="Add more"]')
+                    driver.execute_script("arguments[0].click();", addmore_button)
+                time.sleep(0.9)
+
+                try:
+                    save_button = driver.find_element(By.XPATH, '//button[text()="Save"]')
+                    driver.execute_script("arguments[0].click();", save_button)
+                    time.sleep(0.8)
+                except:
+                    driver.find_element(By.XPATH, '//button[text()="Save"]').click()
+                    time.sleep(0.8)
+
+            else:
+                print("keys not found!") 
+
+        # Select Polygon blockchain if applicable
+        #if is_polygon.get():
+
+        create = driver.find_element(By.XPATH, '//*[@id="__next"]/div[1]/main/div/div/section/div[2]/form/div/div[1]/span/button')
+        driver.execute_script("arguments[0].click();", create)
+        time.sleep(0.8)
+
+        try:
+            wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
+            cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
+            cross.click()
+            time.sleep(0.8)
+        except:
+            wait_xpath('/html/body/div[6]/div/div/div/div[2]/button/i')
+            cross = driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')
+            cross.click()
+            time.sleep(0.8)
+            # wait_css_selector("i[aria-label='Close']")
+            # cross = driver.find_element_by_css_selector("i[aria-label='Close']")
+            # cross.click()
+            # time.sleep(0.8)
+  
+
+        main_page = driver.current_window_handle
+
+        if is_listing.get():
+            
+            wait_xpath('//a[text()="Sell"]')
+            sell = driver.find_element(By.XPATH, '//a[text()="Sell"]')
+            driver.execute_script("arguments[0].click();", sell)
+            
+            wait_css_selector("input[placeholder='Amount']")
+            amount = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Amount']")
+            amount.send_keys(str(loop_price))
+            time.sleep(1)
+
+            #duration
+            duration_date = duration_value.get()
+            #print(duration_date)
+            # time.sleep(60)
+            if duration_date == 1 : 
+                endday = (date.today() + timedelta(days=1)).day
+                endmonth = (date.today() + timedelta(days=1)).month
+                #print(endday, endmonth)
+            if duration_date == 3 : 
+                endday = (date.today() + timedelta(days=3)).day
+                endmonth = (date.today() + timedelta(days=3)).month
+                #print(endday, endmonth)
+            if duration_date == 7 : 
+                endday = (date.today() + timedelta(days=7)).day
+                endmonth = (date.today() + timedelta(days=7)).month   
+                #print(endday, endmonth)       
+            if duration_date == 30:
+                endday = (date.today() + relativedelta(months=+1)).day
+                endmonth = (date.today() + relativedelta(months=+1)).month
+                #print(endday, endmonth)
+            if duration_date == 60:
+                endday = (date.today() + relativedelta(months=+2)).day
+                endmonth = (date.today() + relativedelta(months=+2)).month
+                #print(endday, endmonth)
+            if duration_date == 90:
+                endday = (date.today() + relativedelta(months=+3)).day
+                endmonth = (date.today() + relativedelta(months=+3)).month
+                #print(endday, endmonth)
+            if duration_date == 120:
+                endday = (date.today() + relativedelta(months=+4)).day
+                endmonth = (date.today() + relativedelta(months=+4)).month  
+                #print(endday, endmonth) 
+            if duration_date == 150:
+                endday = (date.today() + relativedelta(months=+5)).day
+                endmonth = (date.today() + relativedelta(months=+5)).month  
+                #print(endday, endmonth)  
+            if duration_date == 180:
+                endday = (date.today() + relativedelta(months=+6)).day
+                endmonth = (date.today() + relativedelta(months=+6)).month   
+                #print(endday, endmonth)
+
+            #if duration_date != 30:
+            amount.send_keys(Keys.TAB)
+            time.sleep(0.8)
+            # wait_xpath('//*[@id="duration"]')
+            # driver.find_element_by_xpath('//*[@id="duration"]').click()
+            
+            wait_xpath('//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
+            select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
+            driver.execute_script("arguments[0].click();", select_durationday)
+            time.sleep(0.8)
+            
+            if lastdate.strftime('%x')[:2] == "12":
+                #print("is month first")
+                select_durationday.send_keys(str(endmonth))
+                select_durationday.send_keys(str(endday))
+                select_durationday.send_keys(Keys.ENTER)
+                time.sleep(1)
+            elif lastdate.strftime('%x')[:2] == "31":
+                #print("is day first")
+                select_durationday.send_keys(str(endday))
+                select_durationday.send_keys(str(endmonth))
+                select_durationday.send_keys(Keys.ENTER)
+                time.sleep(1)
+            else:
+                print("invalid date format: change date format to MM/DD/YYYY or DD/MM/YYYY")
+
+            wait_css_selector("button[type='submit']")
+            listing = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
+            driver.execute_script("arguments[0].click();", listing)
+            time.sleep(10)
+            
+            if is_polygon.get():
+                driver.find_element(By.XPATH, '//button[text()="Sign"]').click()
+                time.sleep(1)
+
+            for handle in driver.window_handles:
+                if handle != main_page:
+                    login_page = handle
+                    #break
+            
+            driver.switch_to.window(login_page) 
+               
+            if is_polygon.get():
+                print("polygon")
+                wait_css_selector("button[data-testid='request-signature__sign']")
+                sign = driver.find_element(By.CSS_SELECTOR, "button[data-testid='request-signature__sign']")
+                driver.execute_script("arguments[0].click();", sign)
+                time.sleep(1)
+            else:
+                print("eth")
+                try:
+                    wait_xpath("//div[@class='signature-request-message__scroll-button']")
+                    scrollsign = driver.find_element(By.XPATH, "//div[@class='signature-request-message__scroll-button']")
+                    driver.execute_script("arguments[0].click();", scrollsign)
+                    time.sleep(1)
+                except: 
+                    driver.find_element(By.XPATH, "//div[@class='signature-request-message__scroll-button']").click()
+                    time.sleep(1)
+
+                try:
+                    wait_xpath('//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]')
+                    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]').click()
+                    time.sleep(1)
+                except:
+                    wait_xpath('//button[text()="Sign"]')
+                    metasign = driver.find_element(By.XPATH, '//button[text()="Sign"]')
+                    driver.execute_script("arguments[0].click();", metasign)
+                    time.sleep(1)
+
+  
+        #change control to main page
+        driver.switch_to.window(main_page)
+        time.sleep(0.7)
+
+        start_num = start_num + 1
+        print('NFT creation completed!')
+    
+    driver.get("https://www.opensea.io")
+    
+
+
+duration_value = IntVar()
+duration_value.set(value=180)
+
+duration_date = Frame(root, padx=0, pady=1)
+duration_date.grid(row=10, column=1, sticky=(N, W, E, S))
+tk.Radiobutton(duration_date, text='1 day', variable=duration_value, value=1, anchor="w", command=save_duration, width=8,).grid(row=0, column=1)
+tk.Radiobutton(duration_date, text="3 days", variable=duration_value, value=3, anchor="w", command=save_duration, width=8, ).grid(row=0, column=2)
+tk.Radiobutton(duration_date, text="7 days", variable=duration_value, value=7, anchor="w", command=save_duration, width=8,).grid(row=0, column=3)
+tk.Radiobutton(duration_date, text="30 days", variable=duration_value, value=30, anchor="w", command=save_duration, width=8,).grid(row=0, column=4)
+tk.Radiobutton(duration_date, text="60 days", variable=duration_value, value=60, anchor="w", command=save_duration, width=8,).grid(row=0,  column=5)
+tk.Radiobutton(duration_date, text="90 days", variable=duration_value, value=90, anchor="w",command=save_duration,  width=8,).grid(row=1, columnspan=1, column=1)
+tk.Radiobutton(duration_date, text="120 days", variable=duration_value, value=120, anchor="w", command=save_duration, width=8).grid(row=1, columnspan=1, column=2)
+tk.Radiobutton(duration_date, text="150 days", variable=duration_value, value=150, anchor="w", command=save_duration, width=8).grid(row=1, columnspan=1, column=3)
+tk.Radiobutton(duration_date, text="180 days", variable=duration_value, value=180, anchor="w", command=save_duration, width=8).grid(row=1, columnspan=1, column=4)
+duration_date.label = Label(root, text="Duration:", anchor="w", width=20, height=1 )
+duration_date.label.grid(row=10, column=0, padx=12, pady=2)
+
+
+# isnumFormat = tkinter.Checkbutton(root, text='Number format 0001 ~ 99999', var=is_numformat,   width=49, anchor="w")
+# isnumFormat.grid(row=18, column=1)
+isCreate = tkinter.Checkbutton(root, text='Complete Listing', var=is_listing, width=49, anchor="w")
+isCreate.grid(row=19, column=1)
+isPolygon = tkinter.Checkbutton(root, text='Polygon Blockchain',  var=is_polygon, width=49, anchor="w")
+isPolygon.grid(row=20, column=1)
+upload_folder_input_button = tkinter.Button(root, width=50, height=1,  text="Add NFTs Upload Folder", command=upload_folder_input)
+upload_folder_input_button.grid(row=21, column=1, padx=2)
+open_browser = tkinter.Button(root, width=50, height=1,  text="Open Chrome Browser", command=open_chrome_profile)
+open_browser.grid(row=23, column=1, pady=2)
+button_save = tkinter.Button(root, width=50, height=1,  text="Save This Form", command=save) 
+button_save.grid(row=22, column=1, pady=2)
+button_start = tkinter.Button(root, width=44, height=2, bg="green", fg="white", text="Start", command=main_program_loop)
+button_start['font'] = font.Font(size=10, weight='bold')
+button_start.grid(row=25, column=1, pady=2)
+footer = tkinter.Button(root, height=3, width=60, text='Do you you want to show support? \n Now you have the chance to buy me a coffee. Thank you.',  command=coffeeURL, relief=GROOVE  )
+footer.grid(row=31, columnspan=2, padx=31, pady=31)
+
+try:
+    with open(save_file_path(), "rb") as infile:
+        new_dict = pickle.load(infile)
+        global upload_path
+        Name_change_img_folder_button(new_dict[0])
+        upload_path = new_dict[0]
+except FileNotFoundError:
+    pass
+#####BUTTON ZONE END#######
+root.mainloop()
