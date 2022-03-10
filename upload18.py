@@ -222,11 +222,11 @@ def main_program_loop():
     opt = Options()
     opt.add_argument('--headless')
     opt.add_experimental_option("debuggerAddress", "localhost:8989")
-    # driver = webdriver.Chrome(
-    #     executable_path=project_path + "/chromedriver.exe",
-    #     chrome_options=opt,
-    # )
-    driver = webdriver.Chrome( service=Service(project_path + "/chromedriver.exe"), options=opt, )
+    driver = webdriver.Chrome(
+         executable_path=project_path + "/chromedriver.exe",
+         chrome_options=opt,
+    )
+    # driver = webdriver.Chrome( service=Service(project_path + "/chromedriver.exe"), options=opt, )
     wait = WebDriverWait(driver, 60)
 
     ###wait for methods
