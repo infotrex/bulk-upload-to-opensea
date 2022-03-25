@@ -413,14 +413,14 @@ def main_program_loop():
             print("no captcha")
  
         try:
-            wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
-            cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
-            driver.execute_script("arguments[0].click();", cross)
-            time.sleep(0.7)
-        except:
             wait_xpath('/html/body/div[6]/div/div/div/div[2]/button/i')
             cross = driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')
             cross.click()
+            time.sleep(0.7)
+        except:
+            wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
+            cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
+            driver.execute_script("arguments[0].click();", cross)
             time.sleep(0.7)
     
 
