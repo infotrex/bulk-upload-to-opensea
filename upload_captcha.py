@@ -83,6 +83,8 @@ is_listing.set(True)
 is_numformat = BooleanVar()
 is_numformat.set(False) 
 
+is_sensitivecontent = BooleanVar()
+is_sensitivecontent.set(False) 
 
 def save_duration():
     duration_value.set(value=duration_value.get())
@@ -354,6 +356,14 @@ def main_program_loop():
             else:
                 print("keys not found!") 
 
+        if is_sensitivecontent.get():
+            #Explicit & Sensitive toggle
+            wait_xpath('//*[@id="explicit-content-toggle"]')
+            toggle_sensivity = driver.find_element(By.XPATH,'//*[@id="explicit-content-toggle"]')
+            # toggle_sensivity.location_once_scrolled_into_view
+            driver.execute_script("return arguments[0].click();", toggle_sensivity)
+            time.sleep(1.1)
+
         # Select Polygon blockchain if applicable
         wait_xpath('//*[@id="chain"]')
         default_blockchain = driver.find_element(By.ID, "chain").get_attribute("value")        
@@ -439,70 +449,34 @@ def main_program_loop():
 
             #duration
             duration_date = duration_value.get()
-            #print(duration_date)
-            # time.sleep(60)
-            if duration_date == 1 : 
-                endday = (date.today() + dateutil.relativedelta.relativedelta(days=1)).day
-                endmonth = (date.today() + dateutil.relativedelta.relativedelta(days=1)).month 
-                # print(endday, endmonth)
-            if duration_date == 3 : 
-                endday = (date.today() + dateutil.relativedelta.relativedelta(days=3)).day
-                endmonth = (date.today() + dateutil.relativedelta.relativedelta(days=3)).month 
-                # print(endday, endmonth)
-            if duration_date == 7 :  
-                endday = (date.today() + dateutil.relativedelta.relativedelta(days=7)).day
-                endmonth = (date.today() + dateutil.relativedelta.relativedelta(days=7)).month 
-                # print(endday, endmonth)       
-            if duration_date == 30:
-                endday = (date.today() + dateutil.relativedelta.relativedelta(months=1)).day
-                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=1)).month 
-                # print(endday, endmonth)
-            if duration_date == 60:
-                endday = (date.today() + dateutil.relativedelta.relativedelta(months=2)).day
-                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=2)).month 
-                # print(endday, endmonth)
-            if duration_date == 90:
-                endday = (date.today() + dateutil.relativedelta.relativedelta(months=3)).day
-                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=3)).month 
-                # print(endday, endmonth)
-            if duration_date == 120:
-                endday = (date.today() + dateutil.relativedelta.relativedelta(months=4)).day
-                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=4)).month 
-                # print(endday, endmonth) 
-            if duration_date == 150:
-                endday = (date.today() + dateutil.relativedelta.relativedelta(months=5)).day
-                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=5)).month 
-                # print(endday, endmonth)  
-            if duration_date == 180:
-                endday = (date.today() + dateutil.relativedelta.relativedelta(months=6)).day
-                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=6)).month 
-                #print(endday, endmonth)
 
             #if duration_date != 30:
             amount.send_keys(Keys.TAB)
             time.sleep(0.7)
-            # wait_xpath('//*[@id="duration"]')
-            # driver.find_element_by_xpath('//*[@id="duration"]').click()
-            
-            wait_xpath('//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
-            select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
-            driver.execute_script("arguments[0].click();", select_durationday)
+
+            wait_xpath('//*[@role="dialog"]/div[1]/div[1]/div/input')
+            select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[1]/div[1]/div/input')
+            select_durationday.click()
+            if duration_date == 1 : 
+                range_button_location = '//span[normalize-space() = "1 day"]'
+            if duration_date == 3 : 
+                range_button_location = '//span[normalize-space() = "3 days"]'
+            if duration_date == 7 : 
+                range_button_location = '//span[normalize-space() = "7 days"]'
+            if duration_date == 30 : 
+                range_button_location = '//span[normalize-space() = "1 month"]'    
+            if duration_date == 90 : 
+                range_button_location = '//span[normalize-space() = "3 months"]' 
+            if duration_date == 180 : 
+                range_button_location = '//span[normalize-space() = "6 months"]'     
+
+            wait.until(ExpectedConditions.presence_of_element_located(
+                (By.XPATH, range_button_location)))
+            ethereum_button = driver.find_element(
+                By.XPATH, range_button_location)
+            ethereum_button.click()
+            select_durationday.send_keys(Keys.ENTER)
             time.sleep(0.7)
-            
-            if lastdate.strftime('%x')[:2] == "12":
-                # print("is month first")
-                select_durationday.send_keys(str(endmonth))
-                select_durationday.send_keys(str(endday))
-                select_durationday.send_keys(Keys.ENTER)
-                time.sleep(0.7)
-            elif lastdate.strftime('%x')[:2] == "31":
-                # print("is day first")
-                select_durationday.send_keys(str(endday))
-                select_durationday.send_keys(str(endmonth))
-                select_durationday.send_keys(Keys.ENTER)
-                time.sleep(0.7)
-            else:
-                print("invalid date format: change date format to MM/DD/YYYY or DD/MM/YYYY")
 
             delay()
             wait_css_selector("button[type='submit']")
@@ -564,19 +538,17 @@ duration_value = IntVar()
 duration_value.set(value=180)
 duration_date = Frame(root, padx=0, pady=1)
 duration_date.grid(row=15, column=1, sticky=(N, W, E, S))
-tk.Radiobutton(duration_date, text='1 day', variable=duration_value, value=1, anchor="w", command=save_duration, width=8,).grid(row=0, column=1)
-tk.Radiobutton(duration_date, text="3 days", variable=duration_value, value=3, anchor="w", command=save_duration, width=8, ).grid(row=0, column=2)
-tk.Radiobutton(duration_date, text="7 days", variable=duration_value, value=7, anchor="w", command=save_duration, width=8,).grid(row=0, column=3)
-tk.Radiobutton(duration_date, text="30 days", variable=duration_value, value=30, anchor="w", command=save_duration, width=8,).grid(row=0, column=4)
-tk.Radiobutton(duration_date, text="60 days", variable=duration_value, value=60, anchor="w", command=save_duration, width=8,).grid(row=0,  column=5)
-tk.Radiobutton(duration_date, text="90 days", variable=duration_value, value=90, anchor="w",command=save_duration,  width=8,).grid(row=1, columnspan=1, column=1)
-tk.Radiobutton(duration_date, text="120 days", variable=duration_value, value=120, anchor="w", command=save_duration, width=8).grid(row=1, columnspan=1, column=2)
-tk.Radiobutton(duration_date, text="150 days", variable=duration_value, value=150, anchor="w", command=save_duration, width=8).grid(row=1, columnspan=1, column=3)
-tk.Radiobutton(duration_date, text="180 days", variable=duration_value, value=180, anchor="w", command=save_duration, width=8).grid(row=1, columnspan=1, column=4)
-duration_date.label = Label(root, text="Duration:", anchor="nw", width=20, height=3 )
-duration_date.label.grid(row=15, column=0, padx=12, pady=2)
+tk.Radiobutton(duration_date, text='1 day', variable=duration_value, value=1, anchor="w", command=save_duration, width=6,).grid(row=0, column=1)
+tk.Radiobutton(duration_date, text="3 days", variable=duration_value, value=3, anchor="w", command=save_duration, width=6, ).grid(row=0, column=2)
+tk.Radiobutton(duration_date, text="7 days", variable=duration_value, value=7, anchor="w", command=save_duration, width=6,).grid(row=0, column=3)
+tk.Radiobutton(duration_date, text="30 days", variable=duration_value, value=30, anchor="w", command=save_duration, width=7,).grid(row=0, column=4)
+tk.Radiobutton(duration_date, text="90 days", variable=duration_value, value=90, anchor="w",command=save_duration,  width=7,).grid(row=0,  column=5)
+tk.Radiobutton(duration_date, text="180 days", variable=duration_value, value=180, anchor="w", command=save_duration, width=7).grid(row=0, column=6)
+duration_date.label = Label(root, text="Duration:", anchor="nw", width=20, height=2 )
+duration_date.label.grid(row=15, column=0, padx=12, pady=0)
 
-
+isSensitive = tkinter.Checkbutton(root, text='Sensitive Content', var=is_sensitivecontent,   width=49, anchor="w")
+isSensitive.grid(row=17, column=1)
 isCreate = tkinter.Checkbutton(root, text='Complete Listing', var=is_listing, width=49, anchor="w")
 isCreate.grid(row=19, column=1)
 isPolygon = tkinter.Checkbutton(root, text='Polygon Blockchain',  var=is_polygon, width=49, anchor="w")
