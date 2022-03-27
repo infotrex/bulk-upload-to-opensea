@@ -23,6 +23,9 @@ Thank you.
   
 # Changelog
   <ul>
+      <li><b>Version 1.8.9 (upload_captcha.py)</b><BR>
+       Fixed duration range selection
+      </li>
     <li><b>Version 1.8.8 (upload_captcha.py)</b><BR>
         Add chrome extesion: Buster: Captcha Solver for Humans<BR>
         https://chrome.google.com/webstore/detail/buster-captcha-solver-for/mpbjkejclgfgadiemmefgebjfooflfhl?hl=en<BR>
