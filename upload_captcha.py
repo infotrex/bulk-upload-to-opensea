@@ -267,7 +267,9 @@ def main_program_loop():
             
     def delay(waiting_time=10):
             driver.implicitly_wait(waiting_time)
-            
+
+    sleeptime = random.uniform(0.5, 3)
+
     while end_num >= start_num:
         if is_numformat.get():
             start_numformat = f"{ start_num:04}"
@@ -283,19 +285,19 @@ def main_program_loop():
         imageUpload = driver.find_element(By.XPATH, '//*[@id="media"]')
         imagePath = os.path.abspath(file_path + "\\images\\" + str(start_numformat) + "." + loop_file_format)  # change folder here
         imageUpload.send_keys(imagePath)
-        time.sleep(0.7)
+        time.sleep(sleeptime)
 
         name = driver.find_element(By.XPATH, '//*[@id="name"]')
         name.send_keys(loop_title + str(start_numformat))  # +1000 for other folders #change name before "#"
-        time.sleep(0.7)
+        time.sleep(sleeptime)
 
         ext_link = driver.find_element(By.XPATH, '//*[@id="external_link"]')
         ext_link.send_keys(loop_external_link)
-        time.sleep(0.7)
+        time.sleep(sleeptime)
 
         desc = driver.find_element(By.XPATH, '//*[@id="description"]')
         desc.send_keys(loop_description)
-        time.sleep(0.7)
+        time.sleep(sleeptime)
 
         jsonFile = file_path + "/json/"+ str(start_numformat) + ".json"
         if os.path.isfile(jsonFile) and os.access(jsonFile, os.R_OK):
@@ -304,7 +306,7 @@ def main_program_loop():
             wait_css_selector("button[aria-label='Add properties']")
             properties = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Add properties']")
             driver.execute_script("arguments[0].click();", properties)
-            time.sleep(0.7)
+            time.sleep(sleeptime)
 
             # checks if file exists
             jsonData = json.loads(open(file_path + "\\json\\"+ str(start_numformat) + ".json").read())
@@ -326,10 +328,10 @@ def main_program_loop():
                 try:
                     save_button = driver.find_element(By.XPATH, '//button[text()="Save"]')
                     driver.execute_script("arguments[0].click();", save_button)
-                    time.sleep(0.7)
+                    time.sleep(sleeptime)
                 except:
                     driver.find_element(By.XPATH, '//button[text()="Save"]').click()
-                    time.sleep(0.7)
+                    time.sleep(sleeptime)
 
             elif "properties" in jsonData:
                 jsonMetaData = jsonData['properties']
@@ -348,10 +350,10 @@ def main_program_loop():
                 try:
                     save_button = driver.find_element(By.XPATH, '//button[text()="Save"]')
                     driver.execute_script("arguments[0].click();", save_button)
-                    time.sleep(0.7)
+                    time.sleep(sleeptime)
                 except:
                     driver.find_element(By.XPATH, '//button[text()="Save"]').click()
-                    time.sleep(0.7)
+                    time.sleep(sleeptime)
 
             else:
                 print("keys not found!") 
@@ -376,7 +378,7 @@ def main_program_loop():
 
         create = driver.find_element(By.XPATH, '//*[@id="__next"]/div[1]/main/div/div/section/div[2]/form/div/div[1]/span/button')
         driver.execute_script("arguments[0].click();", create)
-        time.sleep(0.7)
+        time.sleep(sleeptime)
         
         main_page = driver.current_window_handle
         
@@ -407,15 +409,15 @@ def main_program_loop():
                     wait_xpath('/html/body/div[1]/div/div[3]/div[2]/div[1]/div[1]/div[4]')
                     capt_btn = driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div[2]/div[1]/div[1]/div[4]')
                     capt_btn.click()
-                    time.sleep(1)
+                    time.sleep(sleeptime)
                 except:
                     # capt_btn = WebDriverWait(driver, 10).until(ExpectedConditions.element_to_be_clickable((By.XPATH ,'//*[@id="solver-button"]')))
                     capt_btn = driver.find_element_by_xpath("//button[@id='solver-button']")
                     driver.execute_script("arguments[0].click();", capt_btn)
-                    time.sleep(1)
+                    time.sleep(sleeptime)
 
                 driver.switch_to.default_content()  
-                time.sleep(1.5)
+                time.sleep(sleeptime)
 
             else:
                 print("captcha not found")
@@ -426,12 +428,12 @@ def main_program_loop():
             wait_xpath('/html/body/div[6]/div/div/div/div[2]/button/i')
             cross = driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')
             cross.click()
-            time.sleep(0.7)
+            time.sleep(sleeptime)
         except:
             wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
             cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
             driver.execute_script("arguments[0].click();", cross)
-            time.sleep(0.7)
+            time.sleep(sleeptime)
     
 
         main_page = driver.current_window_handle
@@ -445,14 +447,14 @@ def main_program_loop():
             wait_css_selector("input[placeholder='Amount']")
             amount = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Amount']")
             amount.send_keys(str(loop_price))
-            time.sleep(0.7)
+            time.sleep(sleeptime)
 
             #duration
             duration_date = duration_value.get()
 
             #if duration_date != 30:
             amount.send_keys(Keys.TAB)
-            time.sleep(0.7)
+            time.sleep(sleeptime)
 
             wait_xpath('//*[@role="dialog"]/div[1]/div[1]/div/input')
             select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[1]/div[1]/div/input')
@@ -476,7 +478,7 @@ def main_program_loop():
                 By.XPATH, range_button_location)
             ethereum_button.click()
             select_durationday.send_keys(Keys.ENTER)
-            time.sleep(0.7)
+            time.sleep(sleeptime)
 
             delay()
             wait_css_selector("button[type='submit']")
@@ -486,7 +488,7 @@ def main_program_loop():
             
             if is_polygon.get():
                 driver.find_element(By.XPATH, '//button[text()="Sign"]').click()
-                time.sleep(2)
+                time.sleep(sleeptime)
 
             for handle in driver.window_handles:
                 if handle != main_page:
@@ -499,36 +501,36 @@ def main_program_loop():
                 wait_css_selector("button[data-testid='request-signature__sign']")
                 sign = driver.find_element(By.CSS_SELECTOR, "button[data-testid='request-signature__sign']")
                 driver.execute_script("arguments[0].click();", sign)
-                time.sleep(0.7)
+                time.sleep(sleeptime)
                 
             else:
                 try:
                     wait_xpath("//div[@class='signature-request-message__scroll-button']")
                     scrollsign = driver.find_element(By.XPATH, "//div[@class='signature-request-message__scroll-button']")
                     driver.execute_script("arguments[0].click();", scrollsign)
-                    time.sleep(0.7)
+                    time.sleep(sleeptime)
                 except: 
                     driver.find_element(By.XPATH, "//div[@class='signature-request-message__scroll-button']").click()
-                    time.sleep(0.7)
+                    time.sleep(sleeptime)
 
                 try:
                     wait_xpath('//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]')
                     driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]').click()
-                    time.sleep(0.7)
+                    time.sleep(sleeptime)
                 except:
                     wait_xpath('//button[text()="Sign"]')
                     metasign = driver.find_element(By.XPATH, '//button[text()="Sign"]')
                     driver.execute_script("arguments[0].click();", metasign)
-                    time.sleep(0.7)
+                    time.sleep(sleeptime)
 
   
         #change control to main page
         driver.switch_to.window(main_page)
-        time.sleep(1)
+        time.sleep(sleeptime)
 
         start_num = start_num + 1
         print('NFT creation completed!')
-        time.sleep(2)
+        time.sleep(sleeptime)
     
     driver.get("https://www.opensea.io")
     
