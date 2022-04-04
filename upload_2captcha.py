@@ -405,20 +405,16 @@ def main_program_loop():
             print("no captcha")
  
         try:
-            delay()
-            # wait_xpath('/html/body/div[6]/div/div/div/div[2]/button/i')
-            cross = WebDriverWait(driver, 10).until(ExpectedConditions.presence_of_element_located((By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')))
+            wait_xpath('/html/body/div[6]/div/div/div/div[2]/button/i')
+            cross = driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')
             cross.click()
             time.sleep(sleeptime)
         except:
-            delay()
-            # wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
-            # cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
-            cross = WebDriverWait(driver, 10).until(ExpectedConditions.presence_of_element_located((By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')))
+            wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
+            cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
             driver.execute_script("arguments[0].click();", cross)
             time.sleep(sleeptime)
 
-    
 
         main_page = driver.current_window_handle
 
