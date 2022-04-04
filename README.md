@@ -11,6 +11,9 @@ Thank you.
   ~ or ~<BR>
   Easy step by step<BR>
   https://www.youtube.com/watch?v=j0WguSodGf8<BR>
+  Bulk upload to opensea - Buster: Captcha Solver<BR>
+  https://www.youtube.com/watch?v=6IoyczfQxtg<BR>
+  
 
 # Pay Service
   Why need to pay? I realise some user are over requested additional feature or addon over the limitation.
@@ -23,6 +26,12 @@ Thank you.
   
 # Changelog
   <ul>
+      <li><b>Version 1.9.0 (upload_2captcha.py)</b><BR>
+       2Captcha Solver<BR>
+       https://chrome.google.com/webstore/detail/2captcha-solver/ifibfemgeogfhoebkmokieepdoobkbpo?hl=en<BR>
+        get your API-key from <a href="https://2captcha.com?from=13605454" target="_blank">2captcha.com</a><BR>
+        Enabled & Solve automatically reCaptcha V2 at option page.
+      </li>
       <li><b>Version 1.8.9 (upload_captcha.py)</b><BR>
        Fixed duration range selection
       </li>
