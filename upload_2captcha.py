@@ -46,7 +46,7 @@ lastdate = date(date.today().year, 12, 31)
 root = Tk()
 root.geometry('750x850')
 root.resizable(False, False)
-root.title("NFTs Upload to OpenSea v1.9.0 - 2Captcha Solver")
+root.title("NFTs Upload to OpenSea v1.9.0 - 2Captcha.com Solver")
   
 input_save_list = ["NFTs folder :", 0, 0, 0, 0, 0, 0, 0, 0, 0]
 main_directory = os.path.join(sys.path[0])
