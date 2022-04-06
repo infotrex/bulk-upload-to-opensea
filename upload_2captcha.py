@@ -300,7 +300,7 @@ def main_program_loop():
         desc.send_keys(loop_description)
         time.sleep(sleeptime)
 
-        jsonFile = file_path + "/json/"+ str(start_numformat) + ".json1"
+        jsonFile = file_path + "/json/"+ str(start_numformat) + ".json"
         if os.path.isfile(jsonFile) and os.access(jsonFile, os.R_OK):
            
             #print(str(jsonMetaData))
