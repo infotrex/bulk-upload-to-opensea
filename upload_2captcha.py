@@ -35,7 +35,6 @@ import locale
 import json 
 import ssl
 import random
-import requests
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
