@@ -443,7 +443,8 @@ def main_program_loop():
             wait_xpath('//a[text()="Sell"]')
             sell = driver.find_element(By.XPATH, '//a[text()="Sell"]')
             driver.execute_script("arguments[0].click();", sell)
-            
+            time.sleep(sleeptime)
+	
             wait_css_selector("input[placeholder='Amount']")
             amount = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Amount']")
             amount.send_keys(str(loop_price))
