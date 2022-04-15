@@ -9,7 +9,6 @@ import tkinter.font as font
 from turtle import width
 from PIL import ImageTk, Image
 import urllib.request
-from urllib import parse
 from io import BytesIO
 import os
 import io
@@ -35,6 +34,7 @@ import locale
 import json 
 import ssl
 import random
+import requests
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -45,7 +45,7 @@ lastdate = date(date.today().year, 12, 31)
 root = Tk()
 root.geometry('750x850')
 root.resizable(False, False)
-root.title("NFTs Upload to OpenSea v1.9.0 - 2Captcha.com Solver")
+root.title("NFTs Upload to OpenSea v1.8.8")
   
 input_save_list = ["NFTs folder :", 0, 0, 0, 0, 0, 0, 0, 0, 0]
 main_directory = os.path.join(sys.path[0])
@@ -85,8 +85,6 @@ is_listing.set(True)
 is_numformat = BooleanVar()
 is_numformat.set(False) 
 
-is_sensitivecontent = BooleanVar()
-is_sensitivecontent.set(False) 
 
 def save_duration():
     duration_value.set(value=duration_value.get())
@@ -231,6 +229,8 @@ def main_program_loop():
     loop_external_link = str(external_link.input_field.get())
     loop_description = description.input_field.get()
 
+
+
     ##chromeoptions
     options = webdriver.ChromeOptions()
     options.add_argument("--disable-blink-features=AutomationControlled")
@@ -265,11 +265,9 @@ def main_program_loop():
             return False
         return True
             
-    def delay(waiting_time=30):
+    def delay(waiting_time=10):
             driver.implicitly_wait(waiting_time)
-
-    sleeptime = random.uniform(0.85, 2.85)
-
+            
     while end_num >= start_num:
         if is_numformat.get():
             start_numformat = f"{ start_num:04}"
@@ -285,19 +283,19 @@ def main_program_loop():
         imageUpload = driver.find_element(By.XPATH, '//*[@id="media"]')
         imagePath = os.path.abspath(file_path + "\\images\\" + str(start_numformat) + "." + loop_file_format)  # change folder here
         imageUpload.send_keys(imagePath)
-        time.sleep(sleeptime)
+        time.sleep(0.8)
 
         name = driver.find_element(By.XPATH, '//*[@id="name"]')
         name.send_keys(loop_title + str(start_numformat))  # +1000 for other folders #change name before "#"
-        time.sleep(sleeptime)
+        time.sleep(0.8)
 
         ext_link = driver.find_element(By.XPATH, '//*[@id="external_link"]')
         ext_link.send_keys(loop_external_link)
-        time.sleep(sleeptime)
+        time.sleep(0.8)
 
         desc = driver.find_element(By.XPATH, '//*[@id="description"]')
         desc.send_keys(loop_description)
-        time.sleep(sleeptime)
+        time.sleep(0.8)
 
         jsonFile = file_path + "/json/"+ str(start_numformat) + ".json"
         if os.path.isfile(jsonFile) and os.access(jsonFile, os.R_OK):
@@ -306,7 +304,7 @@ def main_program_loop():
             wait_css_selector("button[aria-label='Add properties']")
             properties = driver.find_element(By.CSS_SELECTOR, "button[aria-label='Add properties']")
             driver.execute_script("arguments[0].click();", properties)
-            time.sleep(sleeptime)
+            time.sleep(0.8)
 
             # checks if file exists
             jsonData = json.loads(open(file_path + "\\json\\"+ str(start_numformat) + ".json").read())
@@ -323,15 +321,15 @@ def main_program_loop():
                     input2.send_keys(str(key['value']))
                     addmore_button = driver.find_element(By.XPATH, '//button[text()="Add more"]')
                     driver.execute_script("arguments[0].click();", addmore_button)
-                time.sleep(sleeptime)
+                time.sleep(0.95)
 
                 try:
                     save_button = driver.find_element(By.XPATH, '//button[text()="Save"]')
                     driver.execute_script("arguments[0].click();", save_button)
-                    time.sleep(sleeptime)
+                    time.sleep(0.8)
                 except:
                     driver.find_element(By.XPATH, '//button[text()="Save"]').click()
-                    time.sleep(sleeptime)
+                    time.sleep(0.8)
 
             elif "properties" in jsonData:
                 jsonMetaData = jsonData['properties']
@@ -345,38 +343,32 @@ def main_program_loop():
                     input2.send_keys(str(key['name']))
                     addmore_button = driver.find_element(By.XPATH, '//button[text()="Add more"]')
                     driver.execute_script("arguments[0].click();", addmore_button)
-                time.sleep(sleeptime)
+                time.sleep(0.9)
 
                 try:
                     save_button = driver.find_element(By.XPATH, '//button[text()="Save"]')
                     driver.execute_script("arguments[0].click();", save_button)
-                    time.sleep(sleeptime)
+                    time.sleep(0.8)
                 except:
                     driver.find_element(By.XPATH, '//button[text()="Save"]').click()
-                    time.sleep(sleeptime)
+                    time.sleep(0.8)
 
             else:
                 print("keys not found!") 
 
         # Select Polygon blockchain if applicable
         wait_xpath('//*[@id="chain"]')
-        default_blockchain = driver.find_element(By.ID, "chain").get_attribute("value")
-        blockchain_dropdown = driver.find_element(By.ID, "chain")
-        driver.execute_script("arguments[0].scrollIntoView();", blockchain_dropdown )
-        # print(default_blockchain)
+        default_blockchain = driver.find_element(By.ID, "chain").get_attribute("value")        
+        print(default_blockchain)
+
 
         if is_polygon.get():
-            print("polygon")
+            pass
 
 
-        else:
-            print("eth")
-          
-
-        # delay()
         create = driver.find_element(By.XPATH, '//*[@id="__next"]/div[1]/main/div/div/section/div[2]/form/div/div[1]/span/button')
         driver.execute_script("arguments[0].click();", create)
-        time.sleep(sleeptime)
+        time.sleep(0.8)
         
         main_page = driver.current_window_handle
         
@@ -384,41 +376,52 @@ def main_program_loop():
             wait_xpath('//h4[text()="Almost done"]')
             captcha_element = driver.find_element(By.XPATH,'//h4[text()="Almost done"]')
 
-            if check_exists_by_tagname('iframe'):
-                # print("have iframe")
-                
-                delay()
-                solved_info = WebDriverWait(driver, 20).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//*[@class='captcha-solver-info']" )))
-                # solved_status = WebDriverWait(driver, 10).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//*[@class='captcha-solver-info']" ))).get_attribute("innerHTML")
-                # print(str(solved_status))
-                wait_xpath("//div[@class='captcha-solver']")
-                captcha_solver_button = driver.find_element(By.XPATH, "//div[@class='captcha-solver']")
-                driver.execute_script("arguments[0].click();", captcha_solver_button)
-                time.sleep(sleeptime)
-                WebDriverWait(driver, 60).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//*[@data-state='solving']" )))
-                print("solving")
-                WebDriverWait(driver, 300).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//*[@data-state='solved']")))
-                print("solved")
-            
-            else:
-                pass
+            driver.switch_to.default_content()
 
-                    
+            src = driver.find_element(By.CSS_SELECTOR,"iframe[title='recaptcha challenge expires in two minutes']").get_attribute("src")
+            
+            
+            data_sitekey = src.split('=')[3]
+
+            API_KEY = 'Put your API Key here'
+
+            u1 = f"https://2captcha.com/in.php?key={API_KEY}&method=userrecaptcha&googlekey={data_sitekey}&pageurl={collection_link}&json=1&invisible=1"
+            r1 = requests.get(u1)
+            print(r1.json())
+            rid = r1.json().get("request")
+            u2 = f"https://2captcha.com/res.php?key={API_KEY}&action=get&id={int(rid)}&json=1"
+            time.sleep(5)
+            while True:
+                r2 = requests.get(u2)
+                print(r2.json())
+                if r2.json().get("status") == 1:
+                    form_tokon = r2.json().get("request")
+                    break
+                time.sleep(5)
+            wirte_tokon_js = f'document.getElementById("g-recaptcha-response").innerHTML="{form_tokon}";'
+            submit_js = 'document.getElementById("recaptcha-demo-form").submit();'
+            driver.execute_script(wirte_tokon_js)
+            time.sleep(1)
+            driver.execute_script(submit_js)
+    
+            time.sleep(10)
+         
         else:
             print("no captcha")
-            
  
         try:
             delay()
-            cross = WebDriverWait(driver, 60).until(ExpectedConditions.presence_of_element_located((By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')))
-            cross.click()
-            time.sleep(sleeptime)
+            wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
+            cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
+            driver.execute_script("arguments[0].click();", cross)
+            time.sleep(0.8)
         except:
             delay()
-            cross = WebDriverWait(driver, 60).until(ExpectedConditions.presence_of_element_located((By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')))
-            driver.execute_script("arguments[0].click();", cross)
-            time.sleep(sleeptime)
-
+            wait_xpath('/html/body/div[6]/div/div/div/div[2]/button/i')
+            cross = driver.find_element(By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')
+            cross.click()
+            time.sleep(0.8)
+    
 
         main_page = driver.current_window_handle
 
@@ -431,48 +434,82 @@ def main_program_loop():
             wait_css_selector("input[placeholder='Amount']")
             amount = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Amount']")
             amount.send_keys(str(loop_price))
-            time.sleep(sleeptime)
+            time.sleep(0.8)
 
             #duration
             duration_date = duration_value.get()
             #print(duration_date)
-            
+            # time.sleep(60)
+            if duration_date == 1 : 
+                endday = (date.today() + dateutil.relativedelta.relativedelta(days=1)).day
+                endmonth = (date.today() + dateutil.relativedelta.relativedelta(days=1)).month 
+                # print(endday, endmonth)
+            if duration_date == 3 : 
+                endday = (date.today() + dateutil.relativedelta.relativedelta(days=3)).day
+                endmonth = (date.today() + dateutil.relativedelta.relativedelta(days=3)).month 
+                # print(endday, endmonth)
+            if duration_date == 7 :  
+                endday = (date.today() + dateutil.relativedelta.relativedelta(days=7)).day
+                endmonth = (date.today() + dateutil.relativedelta.relativedelta(days=7)).month 
+                # print(endday, endmonth)       
+            if duration_date == 30:
+                endday = (date.today() + dateutil.relativedelta.relativedelta(months=1)).day
+                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=1)).month 
+                # print(endday, endmonth)
+            if duration_date == 60:
+                endday = (date.today() + dateutil.relativedelta.relativedelta(months=2)).day
+                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=2)).month 
+                # print(endday, endmonth)
+            if duration_date == 90:
+                endday = (date.today() + dateutil.relativedelta.relativedelta(months=3)).day
+                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=3)).month 
+                # print(endday, endmonth)
+            if duration_date == 120:
+                endday = (date.today() + dateutil.relativedelta.relativedelta(months=4)).day
+                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=4)).month 
+                # print(endday, endmonth) 
+            if duration_date == 150:
+                endday = (date.today() + dateutil.relativedelta.relativedelta(months=5)).day
+                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=5)).month 
+                # print(endday, endmonth)  
+            if duration_date == 180:
+                endday = (date.today() + dateutil.relativedelta.relativedelta(months=6)).day
+                endmonth = (date.today() + dateutil.relativedelta.relativedelta(months=6)).month 
+                #print(endday, endmonth)
+
             #if duration_date != 30:
             amount.send_keys(Keys.TAB)
-            time.sleep(sleeptime)
+            time.sleep(0.8)
+            # wait_xpath('//*[@id="duration"]')
+            # driver.find_element_by_xpath('//*[@id="duration"]').click()
             
-            wait_xpath('//*[@role="dialog"]/div[1]/div[1]/div/input')
-            select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[1]/div[1]/div/input')
-            select_durationday.click()
-            if duration_date == 1 : 
-                range_button_location = '//span[normalize-space() = "1 day"]'
-            if duration_date == 3 : 
-                range_button_location = '//span[normalize-space() = "3 days"]'
-            if duration_date == 7 : 
-                range_button_location = '//span[normalize-space() = "7 days"]'
-            if duration_date == 30 : 
-                range_button_location = '//span[normalize-space() = "1 month"]'    
-            if duration_date == 90 : 
-                range_button_location = '//span[normalize-space() = "3 months"]' 
-            if duration_date == 180 : 
-                range_button_location = '//span[normalize-space() = "6 months"]'     
-
-            wait.until(ExpectedConditions.presence_of_element_located(
-                (By.XPATH, range_button_location)))
-            ethereum_button = driver.find_element(
-                By.XPATH, range_button_location)
-            ethereum_button.click()
-            select_durationday.send_keys(Keys.ENTER)
-            time.sleep(sleeptime)
+            wait_xpath('//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
+            select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[2]/div[2]/div/div[2]/input')
+            driver.execute_script("arguments[0].click();", select_durationday)
+            time.sleep(0.8)
+            
+            if lastdate.strftime('%x')[:2] == "12":
+                # print("is month first")
+                select_durationday.send_keys(str(endmonth))
+                select_durationday.send_keys(str(endday))
+                select_durationday.send_keys(Keys.ENTER)
+                time.sleep(0.8)
+            elif lastdate.strftime('%x')[:2] == "31":
+                # print("is day first")
+                select_durationday.send_keys(str(endday))
+                select_durationday.send_keys(str(endmonth))
+                select_durationday.send_keys(Keys.ENTER)
+                time.sleep(0.8)
+            else:
+                print("invalid date format: change date format to MM/DD/YYYY or DD/MM/YYYY")
 
             delay()
             wait_css_selector("button[type='submit']")
             listing = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
             driver.execute_script("arguments[0].click();", listing)
-            time.sleep(2)
+            time.sleep(15)
             
             if is_polygon.get():
-                WebDriverWait(driver, 20).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//button[text()='Sign']")))
                 driver.find_element(By.XPATH, '//button[text()="Sign"]').click()
                 time.sleep(2)
 
@@ -484,43 +521,30 @@ def main_program_loop():
             driver.switch_to.window(login_page) 
                
             if is_polygon.get():
-                try:
-                    driver.find_element(By.XPATH, "//*[@id='app-content']/div/div[2]/div/div[3]/div[1]").click()
-                    time.sleep(0.7)
-                except: 
-                    wait_xpath("//div[@class='signature-request-message__scroll-button']")
-                    polygonscrollsign = driver.find_element(By.XPATH, "//div[@class='signature-request-message__scroll-button']")
-                    driver.execute_script("arguments[0].click();", polygonscrollsign)
-                    time.sleep(0.7)
-
-                try:
-                    wait_xpath('//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]')
-                    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]').click()
-                    time.sleep(0.7)
-                except:
-                    wait_xpath('//button[text()="Sign"]')
-                    metasign = driver.find_element(By.XPATH, '//button[text()="Sign"]')
-                    driver.execute_script("arguments[0].click();", metasign)
-                    time.sleep(0.7)
+                wait_css_selector("button[data-testid='request-signature__sign']")
+                sign = driver.find_element(By.CSS_SELECTOR, "button[data-testid='request-signature__sign']")
+                driver.execute_script("arguments[0].click();", sign)
+                time.sleep(0.8)
+                
             else:
                 try:
-                    driver.find_element(By.XPATH, "//*[@id='app-content']/div/div[2]/div/div[3]/div[1]").click()
-                    time.sleep(0.7)
-                except: 
                     wait_xpath("//div[@class='signature-request-message__scroll-button']")
                     scrollsign = driver.find_element(By.XPATH, "//div[@class='signature-request-message__scroll-button']")
                     driver.execute_script("arguments[0].click();", scrollsign)
-                    time.sleep(0.7)
+                    time.sleep(0.8)
+                except: 
+                    driver.find_element(By.XPATH, "//div[@class='signature-request-message__scroll-button']").click()
+                    time.sleep(0.8)
 
                 try:
                     wait_xpath('//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]')
                     driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[2]/div/div[4]/button[2]').click()
-                    time.sleep(0.7)
+                    time.sleep(0.8)
                 except:
                     wait_xpath('//button[text()="Sign"]')
                     metasign = driver.find_element(By.XPATH, '//button[text()="Sign"]')
                     driver.execute_script("arguments[0].click();", metasign)
-                    time.sleep(0.7)
+                    time.sleep(0.8)
 
   
         #change control to main page
@@ -539,17 +563,19 @@ duration_value = IntVar()
 duration_value.set(value=180)
 duration_date = Frame(root, padx=0, pady=1)
 duration_date.grid(row=15, column=1, sticky=(N, W, E, S))
-tk.Radiobutton(duration_date, text='1 day', variable=duration_value, value=1, anchor="w", command=save_duration, width=6,).grid(row=0, column=1)
-tk.Radiobutton(duration_date, text="3 days", variable=duration_value, value=3, anchor="w", command=save_duration, width=6, ).grid(row=0, column=2)
-tk.Radiobutton(duration_date, text="7 days", variable=duration_value, value=7, anchor="w", command=save_duration, width=6,).grid(row=0, column=3)
-tk.Radiobutton(duration_date, text="30 days", variable=duration_value, value=30, anchor="w", command=save_duration, width=7,).grid(row=0, column=4)
-tk.Radiobutton(duration_date, text="90 days", variable=duration_value, value=90, anchor="w",command=save_duration,  width=7,).grid(row=0,  column=5)
-tk.Radiobutton(duration_date, text="180 days", variable=duration_value, value=180, anchor="w", command=save_duration, width=7).grid(row=0, column=6)
-duration_date.label = Label(root, text="Duration:", anchor="nw", width=20, height=2 )
-duration_date.label.grid(row=15, column=0, padx=12, pady=0)
+tk.Radiobutton(duration_date, text='1 day', variable=duration_value, value=1, anchor="w", command=save_duration, width=8,).grid(row=0, column=1)
+tk.Radiobutton(duration_date, text="3 days", variable=duration_value, value=3, anchor="w", command=save_duration, width=8, ).grid(row=0, column=2)
+tk.Radiobutton(duration_date, text="7 days", variable=duration_value, value=7, anchor="w", command=save_duration, width=8,).grid(row=0, column=3)
+tk.Radiobutton(duration_date, text="30 days", variable=duration_value, value=30, anchor="w", command=save_duration, width=8,).grid(row=0, column=4)
+tk.Radiobutton(duration_date, text="60 days", variable=duration_value, value=60, anchor="w", command=save_duration, width=8,).grid(row=0,  column=5)
+tk.Radiobutton(duration_date, text="90 days", variable=duration_value, value=90, anchor="w",command=save_duration,  width=8,).grid(row=1, columnspan=1, column=1)
+tk.Radiobutton(duration_date, text="120 days", variable=duration_value, value=120, anchor="w", command=save_duration, width=8).grid(row=1, columnspan=1, column=2)
+tk.Radiobutton(duration_date, text="150 days", variable=duration_value, value=150, anchor="w", command=save_duration, width=8).grid(row=1, columnspan=1, column=3)
+tk.Radiobutton(duration_date, text="180 days", variable=duration_value, value=180, anchor="w", command=save_duration, width=8).grid(row=1, columnspan=1, column=4)
+duration_date.label = Label(root, text="Duration:", anchor="nw", width=20, height=3 )
+duration_date.label.grid(row=15, column=0, padx=12, pady=2)
 
-isSensitive = tkinter.Checkbutton(root, text='Sensitive Content', var=is_sensitivecontent,   width=49, anchor="w")
-isSensitive.grid(row=17, column=1)
+
 isCreate = tkinter.Checkbutton(root, text='Complete Listing', var=is_listing, width=49, anchor="w")
 isCreate.grid(row=19, column=1)
 isPolygon = tkinter.Checkbutton(root, text='Polygon Blockchain',  var=is_polygon, width=49, anchor="w")
