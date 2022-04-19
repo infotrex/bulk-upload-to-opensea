@@ -388,7 +388,7 @@ def main_program_loop():
                 # print("have iframe")
                 
                 delay()
-                solved_info = WebDriverWait(driver, 20).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//*[@class='captcha-solver-info']" )))
+                solved_info = WebDriverWait(driver, 150).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//*[@class='captcha-solver-info']" )))
                 # solved_status = WebDriverWait(driver, 10).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//*[@class='captcha-solver-info']" ))).get_attribute("innerHTML")
                 # print(str(solved_status))
                 wait_xpath("//div[@class='captcha-solver']")
