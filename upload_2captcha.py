@@ -410,12 +410,12 @@ def main_program_loop():
  
         try:
             delay()
-            cross = WebDriverWait(driver, 60).until(ExpectedConditions.presence_of_element_located((By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')))
+            cross = WebDriverWait(driver, 360).until(ExpectedConditions.presence_of_element_located((By.XPATH, '/html/body/div[6]/div/div/div/div[2]/button/i')))
             cross.click()
             time.sleep(sleeptime)
         except:
             delay()
-            cross = WebDriverWait(driver, 60).until(ExpectedConditions.presence_of_element_located((By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')))
+            cross = WebDriverWait(driver, 360).until(ExpectedConditions.presence_of_element_located((By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')))
             driver.execute_script("arguments[0].click();", cross)
             time.sleep(sleeptime)
 
