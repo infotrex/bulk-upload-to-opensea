@@ -43,7 +43,7 @@ locale.setlocale(locale.LC_ALL, '')
 lastdate = date(date.today().year, 12, 31)
 
 root = Tk()
-root.geometry('750x850')
+root.geometry('750x700')
 root.resizable(False, False)
 root.title("NFTs Upload to OpenSea v1.8.9")
   
@@ -268,7 +268,7 @@ def main_program_loop():
     def delay(waiting_time=10):
             driver.implicitly_wait(waiting_time)
 
-    sleeptime = random.uniform(0.5, 1.8)
+    sleeptime = random.uniform(1.2, 2.8)
 
     while end_num >= start_num:
         if is_numformat.get():
@@ -444,7 +444,7 @@ def main_program_loop():
             wait_xpath('/html/body/div[5]/div/div/div/div[2]/button/i')
             cross = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')
             driver.execute_script("arguments[0].click();", cross)
-            time.sleep(sleeptime)
+            time.sleep(2)
     
 
         main_page = driver.current_window_handle
@@ -454,7 +454,7 @@ def main_program_loop():
             wait_xpath('//a[text()="Sell"]')
             sell = driver.find_element(By.XPATH, '//a[text()="Sell"]')
             driver.execute_script("arguments[0].click();", sell)
-            time.sleep(sleeptime)
+            time.sleep(2)
 	
             wait_css_selector("input[placeholder='Amount']")
             amount = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Amount']")
@@ -496,7 +496,7 @@ def main_program_loop():
             wait_css_selector("button[type='submit']")
             listing = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
             driver.execute_script("arguments[0].click();", listing)
-            time.sleep(12)
+            time.sleep(8)
             
             if is_polygon.get():
                 driver.find_element(By.XPATH, '//button[text()="Sign"]').click()
@@ -589,8 +589,8 @@ button_save.grid(row=22, column=1, pady=2)
 button_start = tkinter.Button(root, width=44, height=2, bg="green", fg="white", text="Start", command=main_program_loop)
 button_start['font'] = font.Font(size=10, weight='bold')
 button_start.grid(row=25, column=1, pady=2)
-footer = tkinter.Button(root, height=3, width=60, text='Do you you want to show support? \n Now you have the chance to buy me a coffee. Thank you.',  command=coffeeURL, relief=GROOVE  )
-footer.grid(row=31, columnspan=2, padx=31, pady=31)
+# footer = tkinter.Button(root, height=3, width=60, text='Do you you want to show support? \n Now you have the chance to buy me a coffee. Thank you.',  command=coffeeURL, relief=GROOVE  )
+# footer.grid(row=31, columnspan=2, padx=31, pady=31)
 
 try:
     with open(save_file_path(), "rb") as infile:
