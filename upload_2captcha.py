@@ -268,7 +268,7 @@ def main_program_loop():
     def delay(waiting_time=30):
             driver.implicitly_wait(waiting_time)
 
-     sleeptime = random.uniform(1.25, 2.95)
+    sleeptime = random.uniform(1.25, 2.95)
 
     while end_num >= start_num:
         if is_numformat.get():
