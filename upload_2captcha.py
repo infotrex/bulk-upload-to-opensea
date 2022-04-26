@@ -268,7 +268,7 @@ def main_program_loop():
     def delay(waiting_time=30):
             driver.implicitly_wait(waiting_time)
 
-    sleeptime = random.uniform(0.85, 2.85)
+     sleeptime = random.uniform(1.25, 2.95)
 
     while end_num >= start_num:
         if is_numformat.get():
@@ -417,7 +417,7 @@ def main_program_loop():
             delay()
             cross = WebDriverWait(driver, 360).until(ExpectedConditions.presence_of_element_located((By.XPATH, '/html/body/div[5]/div/div/div/div[2]/button/i')))
             driver.execute_script("arguments[0].click();", cross)
-            time.sleep(sleeptime)
+            time.sleep(2)
 
 
         main_page = driver.current_window_handle
@@ -427,7 +427,7 @@ def main_program_loop():
             wait_xpath('//a[text()="Sell"]')
             sell = driver.find_element(By.XPATH, '//a[text()="Sell"]')
             driver.execute_script("arguments[0].click();", sell)
-            time.sleep(sleeptime)
+            time.sleep(2)
 	
             wait_css_selector("input[placeholder='Amount']")
             amount = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Amount']")
@@ -470,7 +470,7 @@ def main_program_loop():
             wait_css_selector("button[type='submit']")
             listing = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
             driver.execute_script("arguments[0].click();", listing)
-            time.sleep(2)
+            time.sleep(8)
             
             if is_polygon.get():
                 WebDriverWait(driver, 20).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//button[text()='Sign']")))
