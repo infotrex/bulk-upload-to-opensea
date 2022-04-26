@@ -43,7 +43,7 @@ locale.setlocale(locale.LC_ALL, '')
 lastdate = date(date.today().year, 12, 31)
 
 root = Tk()
-root.geometry('750x700')
+root.geometry('750x750')
 root.resizable(False, False)
 root.title("NFTs Upload to OpenSea v1.8.9")
   
@@ -589,8 +589,8 @@ button_save.grid(row=22, column=1, pady=2)
 button_start = tkinter.Button(root, width=44, height=2, bg="green", fg="white", text="Start", command=main_program_loop)
 button_start['font'] = font.Font(size=10, weight='bold')
 button_start.grid(row=25, column=1, pady=2)
-# footer = tkinter.Button(root, height=3, width=60, text='Do you you want to show support? \n Now you have the chance to buy me a coffee. Thank you.',  command=coffeeURL, relief=GROOVE  )
-# footer.grid(row=31, columnspan=2, padx=31, pady=31)
+footer = tkinter.Button(root, height=2, width=60, text='Do you you want to show support? \n Now you have the chance to buy me a coffee. Thank you.',  command=coffeeURL, relief=FLAT  )
+footer.grid(row=31, columnspan=2, padx=31, pady=10)
 
 try:
     with open(save_file_path(), "rb") as infile:
