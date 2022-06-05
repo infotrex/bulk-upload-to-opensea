@@ -1,0 +1,25 @@
+{
+   "background": {
+    "service_worker": "eventPage.js"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "jquery-3.5.0.min.js", "content.js" ],
+      "matches": [ "https://*.opensea.io/*"],
+      "run_at": "document_idle"
+   } ],
+   "description": "Opensea: fixes the Oops, something went wrong ",
+   "icons": {
+      "128": "onay-128.png",
+      "16": "onay-16.png",
+      "48": "onay-48.png"
+   },
+   "manifest_version": 3,
+   "name": "Opensea ops sory kontrol",
+   "permissions": [ "tabs", "storage", "notifications", "contextMenus", "webNavigation","scripting" ],
+   "host_permissions": [
+		"https://testnets.opensea.io/*" ,
+		"https://*.opensea.io/*"
+	],
+   "version": "1.0"
+}
