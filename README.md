@@ -26,6 +26,11 @@ Thank you.
   
 # Changelog
   <ul>
+    <li><b>Version 2.0.0 (upload_2captcha V2.py)</b><BR>
+       2Captcha and Buster Solver combined in one file<BR>
+       Added repetitive error checks for many possible errors that may occur on the site<BR>
+       Collection Scraper added as prototype.
+      </li>
       <li><b>Version 1.9.0 (upload_2captcha.py)</b><BR>
        2Captcha Solver<BR>
        https://chrome.google.com/webstore/detail/2captcha-solver/ifibfemgeogfhoebkmokieepdoobkbpo?hl=en<BR>
