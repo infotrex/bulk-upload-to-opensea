@@ -88,6 +88,15 @@ extension settings: Select any "speech service" and put in API key
      <li>Download I'm not robot captcha clicker extension link: https://chrome.google.com/webstore/detail/im-not-robot-captcha-clic/ceipnlhmjohemhfpbjdgeigkababhmjc/related?hl=en-US</li>
      <li>And click “start” to let it run.</li>
   </ul>
+   <BR>
+     For Collection Scraper added as prototype
+     <ul>
+       <li>Open your collection page like : https://www.opensea.io/collection/yourcollectionsname</li>
+       <li>Set the browser's zoom to 50% or less and wait for the page to fully load. </li>
+       <li>Click "SCRAPE Collection" Button to let it run</li>
+       <li>If you're having trouble doing it in bulk, on the collection page search for 1 and start then 2 then 3...
+          You can do this up to 9 for a 10k collection.</li>
+     </ul>
 
  
 # Checklist before press "start" button
