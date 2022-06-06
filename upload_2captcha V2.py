@@ -49,7 +49,7 @@ lastdate = date(date.today().year, 12, 31)
 root = Tk()
 root.geometry('750x850')
 root.resizable(False, False)
-root.title("NFTs Upload to OpenSea v2.0.0 - 2Captcha.com Solver")
+root.title("NFTs Upload to OpenSea v2.0.1 - 2Captcha.com Solver")
   
 input_save_list = ["NFTs folder :", 0, 0, 0, 0, 0, 0, 0, 0, 0]
 main_directory = os.path.join(sys.path[0])
@@ -634,6 +634,7 @@ def main_program_loop(prgrm):
             ethereum_button = driver.find_element(
                 By.XPATH, range_button_location)
             ethereum_button.click()
+            time.sleep(sleeptime)# dikkat
             select_durationday.send_keys(Keys.ENTER)
             time.sleep(sleeptime)
 
@@ -655,10 +656,10 @@ def main_program_loop(prgrm):
                     wait_E = True    
             #HKN F
             
-            if is_polygon.get():
-                WebDriverWait(driver, 60).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//button[text()='Sign']")))#HKN
-                driver.find_element(By.XPATH, '//button[text()="Sign"]').click()
-                time.sleep(2)
+            #if is_polygon.get():
+                #WebDriverWait(driver, 60).until(ExpectedConditions.presence_of_element_located((By.XPATH, "//button[text()='Sign']")))#HKN
+                #driver.find_element(By.XPATH, '//button[text()="Sign"]').click()
+                #time.sleep(2)
 
             
             login_page=""#HKN
