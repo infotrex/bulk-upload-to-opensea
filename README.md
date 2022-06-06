@@ -26,6 +26,10 @@ Thank you.
   
 # Changelog
   <ul>
+    <li><b>Version 2.0.1 (upload_2captcha V2.py)</b><BR>
+       Deleted some controls that were no longer needed for the polygon.<BR>
+       Added Latest stable release: ChromeDriver
+      </li>
     <li><b>Version 2.0.0 (upload_2captcha V2.py)</b><BR>
        2Captcha and Buster Solver combined in one file<BR>
        Added repetitive error checks for many possible errors that may occur on the site<BR>
