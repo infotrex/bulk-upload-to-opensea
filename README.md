@@ -33,7 +33,7 @@ Thank you.
     <li><b>Version 2.0.0 (upload_2captcha V2.py)</b><BR>
        2Captcha and Buster Solver combined in one file<BR>
        Added repetitive error checks for many possible errors that may occur on the site<BR>
-       Added "chrome_extension" Please open chrome_extension folder and read the instructions
+       Added "chrome_extension" Please open chrome_extension folder and read the instructions<BR>
        Collection Scraper added as prototype.
       </li>
       <li><b>Version 1.9.0 (upload_2captcha.py)</b><BR>
