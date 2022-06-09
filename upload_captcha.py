@@ -498,9 +498,9 @@ def main_program_loop():
             driver.execute_script("arguments[0].click();", listing)
             time.sleep(8)
             
-            if is_polygon.get():
-                driver.find_element(By.XPATH, '//button[text()="Sign"]').click()
-                time.sleep(sleeptime)
+            #if is_polygon.get():
+                #driver.find_element(By.XPATH, '//button[text()="Sign"]').click()
+                #time.sleep(sleeptime)
 
             for handle in driver.window_handles:
                 if handle != main_page:
