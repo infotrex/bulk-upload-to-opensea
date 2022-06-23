@@ -796,6 +796,7 @@ def collection_scraper():#HKN
     time.sleep(5)
 
     #total_items=int(Total_Items.input_field.get()) #HKN
+    #collection_count_text = driver.find_element(By.XPATH, '//div[@class="AssetSearchView--results-count"]/p').text
     collection_count_text = driver.find_element(By.XPATH, '//div[@class="AssetSearchView--results collection--results AssetSearchView--results--phoenix"]//p').text
     c_num = ""
     for c in collection_count_text:
@@ -833,13 +834,14 @@ def collection_scraper():#HKN
             while wait_E:
                 try:
                     #nft_Name = my_nft.find_element(By.XPATH, './/div[@class="AssetCardFooter--name"]').text
-		    nft_Name = my_nft.find_element(By.XPATH, './/a//img').get_attribute('alt')
+                    nft_Name = my_nft.find_element(By.XPATH, './/a//img').get_attribute('alt')
                     nft_Link = my_nft.find_element(By.XPATH, './/a').get_attribute('href')
                     print(my_nft.find_element(By.XPATH, './/a').get_attribute('href'))
                     with open(os.path.join(sys.path[0], "Scraper.txt"),  'a') as outputfile:  # Use file to refer to the file object
                         outputfile.write(nft_Name + "," + nft_Link + "\n")
                     wait_E = False
                 except:
+                    print("Nftnin bir bilgisi bulunamadı tekrar deneniyor")
                     wait_E = True
             
             #time.sleep(0.1)
