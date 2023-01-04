@@ -610,8 +610,11 @@ def main_program_loop(prgrm):
             #print(duration_date)
             
             #if duration_date != 30:
-            amount.send_keys(Keys.TAB)
+            amount.send_keys(Keys.TAB * 3)
             time.sleep(sleeptime)
+	
+	    oprimirDesplegable = driver.find_element(By.ID, "duration")
+            oprimirDesplegable.click()
             
             wait_xpath('//*[@role="dialog"]/div[1]/div[1]/div/input')
             select_durationday = driver.find_element(By.XPATH, '//*[@role="dialog"]/div[1]/div[1]/div/input')
